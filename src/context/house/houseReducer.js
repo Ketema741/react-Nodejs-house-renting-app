@@ -1,46 +1,46 @@
 import {
-    GET_CONTACTS,
-    ADD_CONTACT,
-    DELETE_CONTACT,
-    SET_CURRENT,
-    CLEAR_CURRENT,
-    UPDATE_CONTACT,
-    FILTER_CONTACTS,
-    CLEAR_FILTER,
-    CONTACT_ERROR,
-    CLEAR_CONTACTS
+  GET_HOUSES,
+  ADD_HOUSE,
+  DELETE_HOUSE,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  UPDATE_HOUSE,
+  FILTER_HOUSES,
+  CLEAR_HOUSES,
+  CLEAR_FILTER,
+  HOUSE_ERROR
   } from '../types';
   
-  const contactReducer = (state, action) => {
+  const houseReducer = (state, action) => {
     switch (action.type) {
-      case GET_CONTACTS:
+      case GET_HOUSES:
         return {
           ...state,
-          contacts: action.payload
+          houses: action.payload
         };
-      case ADD_CONTACT:
+      case ADD_HOUSE:
         return {
           ...state,
-          contacts: [action.payload, ...state.contacts]
+          houses: [action.payload, ...state.houses]
         };
-      case UPDATE_CONTACT:
+      case UPDATE_HOUSE:
         return {
           ...state,
-          contacts: state.contacts.map((contact) =>
-            contact._id === action.payload._id ? action.payload : contact
+          houses: state.houses.map((house) =>
+            house._id === action.payload._id ? action.payload : house
           )
         };
-      case DELETE_CONTACT:
+      case DELETE_HOUSE:
         return {
           ...state,
-          contacts: state.contacts.filter(
-            (contact) => contact._id !== action.payload
+          houses: state.houses.filter(
+            (house) => house._id !== action.payload
           )
         };
-      case CLEAR_CONTACTS:
+      case CLEAR_HOUSES:
         return {
           ...state,
-          contacts: null,
+          houses: null,
           filtered: null,
           error: null,
           current: null
@@ -55,10 +55,10 @@ import {
           ...state,
           current: null
         };
-      case FILTER_CONTACTS:
+      case FILTER_HOUSES:
         return {
           ...state,
-          filtered: state.contacts.filter(({ name, email }) => {
+          filtered: state.houses.filter(({ name, email }) => {
             const testString = `${name}${email}`.toLowerCase();
             return testString.includes(action.payload.toLowerCase());
           })
@@ -68,7 +68,7 @@ import {
           ...state,
           filtered: null
         };
-      case CONTACT_ERROR:
+      case HOUSE_ERROR:
         return {
           ...state,
           error: action.payload
@@ -78,4 +78,4 @@ import {
     }
   };
   
-  export default contactReducer;
+  export default houseReducer;

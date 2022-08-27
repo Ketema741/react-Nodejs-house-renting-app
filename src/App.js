@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import HomeForm from './components/houses/HomeForm';
 
 
 import AuthState from './context/auth/AuthState';
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
+            <Route exact path='/form' component={HomeForm} />
           </Switch>
         </div>
       </Router>
