@@ -1,47 +1,60 @@
-import React, { useState,useContext } from 'react'
-import Alert from '../layouts/Alerts'
-import AlertContext from '../../context/alert/alertContext';
+import React, { useState, useContext, useEffect } from 'react'
 import './login.css'
+import Alert from '../layouts/Alerts'
+
+import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
 
-const Login = () => {
+const Login = (props) => {
     const alertContext = useContext(AlertContext)
+    const authContext = useContext(AuthContext)
 
     const [user, setUser] = useState({
-        email: '',
-        password: '',
-      });
+      email: '',
+      password: '',
+    });
+  
+    const { email, password } = user;
+    const { setAlert } = alertContext
+    const { login, error, isAuthenticated } = authContext
+  
     
-      const {  email, password } = user;
-      const { setAlert } = alertContext
-
-
+    useEffect(() => {
+      if(isAuthenticated){
+        props.history.push('/')
+      }
+      if(error === "Invalid Credentials"){
+        setAlert(error, 'danger')
+      }
+  
+      // eslint-disable-next-line
+    }, [error, isAuthenticated,  props.history])
+    
       const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
       const onSubmit = (e) => {
         e.preventDefault();
-        if( email === '' || password === ''){
-         setAlert('Please fill all field', 'danger')
+        if( email === '' || password === '') {
+            setAlert('Please fill all field', 'danger')
         }
         else {
-            setAlert('user already exists', 'danger')
+            login({ email, password })
         }
-        
       };
-    
   
      return (
-        <div class="login-container" >
-            <header class="login-header">
-                <h3 class="heading-3">Your own home:</h3>
-                <h1 class="heading-1">The ultimate personal freedom</h1>
-                <div class="header__seenon-text">cozzy home</div>
+        <div className="login-container" >
+            <header className="login-header">
+                <h3 className="heading-3">Your own home:</h3>
+                <h1 className="heading-1">The ultimate personal freedom</h1>
+                <div className="header__seenon-text">cozzy home</div>
             </header>
-            <div class="section-login">
-                <div class="row">
-                    <div class="login">
-                        <div class="login__form">
-                            <form  class="form" onSubmit={onSubmit}>
+            <div className="section-login">
+                <div className="row">
+                    <div className="login">
+                        <div className="login__form">
+                            <form  className="form" onSubmit={onSubmit}>
                             <Alert />
                                 <input 
                                     id='email'
@@ -50,12 +63,12 @@ const Login = () => {
                                     value={email}
                                     onChange={onChange}
                                     required
-                                    class="form__input" 
+                                    className="form__input" 
                                     placeholder="email" 
                                 />
                                 <label 
                                     htmlFor="email" 
-                                    class="form__label">
+                                    className="form__label">
                                     Email
                                 </label>
                                 <input 
@@ -63,21 +76,21 @@ const Login = () => {
                                     type="password" 
                                     name='password'
                                     placeholder="Password " 
-                                    class="form__input" 
+                                    className="form__input" 
                                     onChange={onChange} 
                                     required
                                     minLength='6'
                                 />
                                 <label 
                                     htmlFor="name" 
-                                    class="form__label">
+                                    className="form__label">
                                     Password
                                 </label>
                                 <input 
                                     type="submit"  
                                     value="Signin" 
                                     name="submit" 
-                                    class="btn btn--green" 
+                                    className="btn btn--green" 
                                 />
                             </form>
                         </div>

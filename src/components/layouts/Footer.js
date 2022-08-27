@@ -3,7 +3,7 @@ import '../../css/Footer.css'
 
 const Footer = () => {
   return (
-        <footer className="footer">
+      <footer className="footer">
         <ul className="nav">
           <li className="nav__item">
             <a href="Home" className="nav__link">Find your dream home</a>

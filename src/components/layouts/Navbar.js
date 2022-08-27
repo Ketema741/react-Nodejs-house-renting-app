@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
+
 import { FaHeart } from 'react-icons/fa'
 import { AiOutlineHome } from 'react-icons/ai'
 import { ImNotification } from 'react-icons/im'
@@ -6,7 +8,62 @@ import { MdOutlineSell } from 'react-icons/md'
 import { BsCreditCard2Back } from 'react-icons/bs'
 import { BsCalendar2Month } from 'react-icons/bs'
 
+import AuthContext from '../../context/auth/authContext';
+
+
+
+
 const Navbar = () => {
+ 
+  const authContext = useContext(AuthContext)
+
+  const { isAuthenticated, user ,logout } = authContext
+  
+
+
+  const onLogout = () => {
+    logout()
+  };
+  const handler = () => {
+
+  }
+
+  const fullName = user.name.split(" ")
+  const firstName = fullName[0]
+  const lastName = fullName[1]
+
+  const authLinks = (
+    <Fragment>
+      <div className="user-nav__user">
+      Hi 
+      <span className="user-nav__user-name"> {user && firstName}</span>
+        <img 
+          src="img/realtor-1.jpeg" 
+          alt="realtor" 
+          className="user-nav__user-photo" 
+        />
+      </div>
+
+      <div className='nav__link'>
+        <Link  to='/login' onClick={onLogout}>
+          <span className='hide-sm'>Logout</span>
+        </Link>
+      </div>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <div className='nav__link'>
+        <Link to='/register'>Register</Link>
+      </div>
+
+      <div className='nav__link'>
+        <Link to='/login' >Login</Link>
+      </div>
+    </Fragment>
+  );
+
   return (
     <Fragment>
         <div className="header__nav">
@@ -14,21 +71,19 @@ const Navbar = () => {
             <nav className="user-nav">
                 <div className="user-nav__icon-box">
                     <FaHeart />
-                    <span className="user-nav__notification">4</span>
+                    <span className="user-nav__notification">{user && user.favourites.length}</span>
                 </div>
                 
-            <div className="user-nav__icon-box">
-                <ImNotification />
-                <span className="user-nav__notification">14</span>
-            </div>
-            <a href='/login' className='nav__link'>
-                <div className="user-nav__user">
-                    <img src="img/realtor-1.jpeg" alt="realtor" className="user-nav__user-photo" />
-                    <span className="user-nav__user-name">Jermia</span>
+                <div className="user-nav__icon-box">
+                    <ImNotification />
+                    <span className="user-nav__notification">{user && user.message.length}</span>
                 </div>
-            </a>
+                {isAuthenticated? authLinks : guestLinks}
+                
             </nav>
         </div>
+
+       
         <nav className="sdbar">
             <ul className="sd-nav">
                 <li className="sd-nav__item sd-nav__item--active">
@@ -40,8 +95,8 @@ const Navbar = () => {
                 
                 <li className="sd-nav__item">
                     <a href="realtors" className="sd-nav__link">
-                    <BsCalendar2Month className="sd-nav__icon" />
-                    <span>Rent</span>
+                      <BsCalendar2Month className="sd-nav__icon" />
+                      <span>Rent</span>
                     </a>
                 </li>
 
@@ -57,7 +112,6 @@ const Navbar = () => {
                         <span>Sell </span>
                     </a>
                 </li>
-                
             </ul>
         </nav>
         <div className="header">

@@ -34,7 +34,6 @@ const UserSchema = mongoose.Schema ({
         type:String,
         required:true
     },
-    
     activityRange: {
         type:Number,
         default:null
@@ -46,7 +45,6 @@ const UserSchema = mongoose.Schema ({
     sold: {
         type:Number,
         default:null
-
     },
     date:{
         type:Date,
@@ -54,4 +52,4 @@ const UserSchema = mongoose.Schema ({
     },
 })
 
-module.exports = mongoose.model('Relator', UserSchema);
+module.exports = mongoose.model('Realtor', UserSchema);

@@ -1,125 +1,157 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './login.css'
 import Alert from '../layouts/Alerts'
 import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext'
 
-const Login = () => {
+
+const Login = (props) => {
     const alertContext = useContext(AlertContext)
+    const authContext = useContext(AuthContext)
     const [user, setUser] = useState({
         name:'',
         email: '',
         password: '',
         password2: '',
+        phone: null
       });
     
-      const {  name, email, password, password2 } = user;
+      const {  name, email, password, password2, phone } = user;
       const { setAlert } = alertContext
+      const { register,error, isAuthenticated } = authContext
+
+      useEffect(() => {
+        if(isAuthenticated){
+          props.history.push('/')
+        }
+        if(error === "User already exists"){
+          setAlert(error, 'danger')
+          
+        }
+    
+        // eslint-disable-next-line
+      }, [error, isAuthenticated,  props.history])
 
       const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
       const onSubmit = (e) => {
         e.preventDefault();
-        if(name === '' || email === '' || password === ''){
-        setAlert('Please fill all field', 'danger')
+        if(name === '' || email === '' || password === '' || phone === ''){
+            setAlert('Please fill all field', 'danger')
         }
         else if( password !== password2 ) {
-        setAlert('password do not much', 'danger')
+            setAlert('password do not much', 'danger')
         } else {
-        console.log({ name, email, password, password2 })
+            register({ name, email, phone, password })
+           
         }
         
       };
     
   
-      return (
-    <div class="login-container" style={style}>
-        <header class="login-header">
-            <h3 class="heading-3">Your own home:</h3>
-            <h1 class="heading-1">The ultimate personal freedom</h1>
-            <div class="header__seenon-text">cozzy home</div>
-        </header>
-        <div class="section-login">
-            <div class="row">
-                <div class="login">
-                    <div class="login__form">
-                        <Alert />
-                        <form  class="form" onSubmit={onSubmit}>
-                            <input 
-                                id='name'
-                                type='name'
-                                name='name'
-                                value={name}
-                                onChange={onChange}
-                                required
-                                class="form__input" 
-                                placeholder="name" 
-                            />
-                            <label 
-                                htmlFor="name" 
-                                class="form__label">
-                                Name
-                            </label>
+    return (
+        <div className="login-container" style={style}>
+            <header className="login-header">
+                <h3 className="heading-3">Your own home:</h3>
+                <h1 className="heading-1">The ultimate personal freedom</h1>
+                <div className="header__seenon-text">cozzy home</div>
+            </header>
+            <div className="section-login">
+                <div className="row">
+                    <div className="login">
+                        <div className="login__form">
+                            <Alert />
+                            <form  className="form" onSubmit={onSubmit}>
+                                <input 
+                                    id='name'
+                                    type='text'
+                                    name='name'
+                                    value={name}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="name" 
+                                />
+                                <label 
+                                    htmlFor="name" 
+                                    className="form__label">
+                                    Name
+                                </label>
 
-                            <input 
-                                id='email'
-                                type='email'
-                                name='email'
-                                value={email}
-                                onChange={onChange}
-                                required
-                                class="form__input" 
-                                placeholder="email" 
-                            />
-                            <label 
-                                htmlFor="email" 
-                                class="form__label">
-                                Email
-                            </label>
-                            <input 
-                                id="password" 
+                                <input 
+                                    id='email'
+                                    type='email'
+                                    name='email'
+                                    value={email}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="email" 
+                                />
+                                <label 
+                                    htmlFor="email" 
+                                    className="form__label">
+                                    Email
+                                </label>
+                                <input 
+                                    id='phone'
+                                    type='text'
+                                    name='phone'
+                                    value={phone}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="phone" 
+                                />
+                                <label 
+                                    htmlFor="phone" 
+                                    className="form__label">
+                                    Phone
+                                </label>
+                                <input 
+                                    id="password" 
+                                    type="password" 
+                                    name='password'
+                                    placeholder="Password " 
+                                    className="form__input" 
+                                    onChange={onChange} 
+                                    required
+                                    minLength='6'
+                                />
+                                <label 
+                                    htmlFor="name" 
+                                    className="form__label">
+                                    Password
+                                </label>
+                                
+                                <input 
+                                id="password2" 
                                 type="password" 
-                                name='password'
-                                placeholder="Password " 
-                                class="form__input" 
+                                name='password2'
+                                placeholder="Confirm Password " 
+                                className="form__input" 
                                 onChange={onChange} 
                                 required
                                 minLength='6'
                             />
                             <label 
                                 htmlFor="name" 
-                                class="form__label">
-                                Password
+                                className="form__label">
+                                Confirm Password
                             </label>
-                            
-                            <input 
-                            id="password2" 
-                            type="password" 
-                            name='password2'
-                            placeholder="Confirm Password " 
-                            class="form__input" 
-                            onChange={onChange} 
-                            required
-                            minLength='6'
-                        />
-                        <label 
-                            htmlFor="name" 
-                            class="form__label">
-                            Confirm Password
-                        </label>
-                            <input 
-                                type="submit"  
-                                value="Signup" 
-                                name="submit" 
-                                class="btn btn--green" 
-                            />
-                        </form>
+                                <input 
+                                    type="submit"  
+                                    value="Signup" 
+                                    name="submit" 
+                                    className="btn btn--green" 
+                                />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-                   
-  )
+    )
 }
 const style = {
   

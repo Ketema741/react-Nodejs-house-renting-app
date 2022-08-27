@@ -5,14 +5,22 @@ import { RiHeartFill  } from 'react-icons/ri'
 import { GiHouseKeys  } from 'react-icons/gi'
 import { AiOutlineAreaChart  } from 'react-icons/ai'
 import { GiFamilyHouse  } from 'react-icons/gi'
+
+
 const HomeItem = ({ home }) => {
 	const initialState = {
-		likes:true
+		likes:true,
+		favourites:[],
+		message:null,
+		controler:false
 	}
+
 	const [state, setState] =useState(initialState)
 
+	const {likes, favourites, message, controler } = state
+
 	const like = () => {
-		if (state.likes === true) {
+		if (likes === true) {
 			setState({likes:false})
 		} else {
 			setState({likes:true})
@@ -23,7 +31,7 @@ const HomeItem = ({ home }) => {
     <div className="home">
 			<img src={home.image} alt={home.title} className="home__img" />
 			
-			{state.likes? 
+			{likes? 
 				(<VscHeart className="home__like" color='red' onClick={like} />)
 				:
 				(<RiHeartFill className="home__like" color='red' onClick={like} />)}

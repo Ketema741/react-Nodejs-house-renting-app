@@ -42,7 +42,7 @@ router.post(
 	  try {
 
 		let realtor = await Realtor.findOne({ email });
-  
+		
 		if (!realtor) {
 		  return res.status(400).json({ msg: 'Invalid Credentials' });
 		}
