@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 // @route     GET api/realtor/Houses
 // @desc      Get all Houses
 // @access    Private
@@ -54,7 +53,8 @@ router.post(
       description, 
       location, 
       area, 
-      rooms, 
+      bed,
+      bath, 
       price, 
       propertyType,
       garage,
@@ -68,7 +68,8 @@ router.post(
         description, 
         location, 
         area, 
-        rooms, 
+        bed,
+        bath, 
         price, 
         propertyType,
         garage,
@@ -96,7 +97,8 @@ router.put('/:id', realtorAuth, async (req, res) => {
     description, 
     location, 
     area, 
-    rooms, 
+    bed,
+    bath, 
     price, 
     propertyType,
     garage,
@@ -110,7 +112,8 @@ router.put('/:id', realtorAuth, async (req, res) => {
   if (description) houseFields.description = description;
   if (location) houseFields.location = location;
   if (area) houseFields.area = area;
-  if (rooms) houseFields.rooms = rooms;
+  if (bed) houseFields.bed = bed;
+  if (bath) houseFields.bath = bath;
   if (price) houseFields.price = price;
   if (propertyType) houseFields.propertyType = propertyType;
   if (garage) houseFields.garage = garage;

@@ -35,7 +35,6 @@ const HomeItem = ({ home }) => {
 				(<VscHeart className="home__like" color='red' onClick={like} />)
 				:
 				(<RiHeartFill className="home__like" color='red' onClick={like} />)}
-
 			<h5 className="home__name">{home.title}</h5>
 
 			<div className="home__location">

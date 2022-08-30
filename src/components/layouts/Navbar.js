@@ -18,7 +18,7 @@ const Navbar = () => {
   const authContext = useContext(AuthContext)
 
   const { isAuthenticated, user ,logout } = authContext
-  
+  console.log(user)
 
 
   const onLogout = () => {
@@ -28,15 +28,12 @@ const Navbar = () => {
 
   }
 
-  const fullName = user.name.split(" ")
-  const firstName = fullName[0]
-  const lastName = fullName[1]
 
   const authLinks = (
     <Fragment>
       <div className="user-nav__user">
       Hi 
-      <span className="user-nav__user-name"> {user && firstName}</span>
+      <span className="user-nav__user-name"> {user && user.name}</span>
         <img 
           src="img/realtor-1.jpeg" 
           alt="realtor" 

@@ -12,7 +12,6 @@ const Homes = () => {
                 rooms:23,
                 area:234,
                 price:10023
-
             },
             {
                 id:2,
@@ -22,7 +21,6 @@ const Homes = () => {
                 rooms:23,
                 area:234,
                 price:10023
-
             },
             {
                 id:3,
@@ -32,7 +30,6 @@ const Homes = () => {
                 rooms:23,
                 area:234,
                 price:10023
-
             },
             {
                 id:4,
@@ -42,24 +39,19 @@ const Homes = () => {
                 rooms:23,
                 area:234,
                 price:10023
-
             },
         ]
     }
     const [state, setState] =useState(initialState)
     const { homes } = state
-    
 
   return (
-
-    <div className="homes" id="home">
-    <h1 className='heading-1 description'>Newest Listings</h1>
-    
-    {homes.map(home =>{ 
-        return <HomeItem home={home} />
-    })}
+    <div className="homes" id="homes">
+        <h1 className='heading-1 description'>Newest Listings</h1>
+        {homes.map(home =>{ 
+            return <HomeItem home={home} key={home.id} />
+        })}
     </div>
-    
   )
 }
 

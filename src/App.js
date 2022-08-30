@@ -8,17 +8,24 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import HomeForm from './components/houses/HomeForm';
 
-
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import HouseState from './context/house/HouseState';
+import setAuthToken from './utils/setAuthToken';
+
+
+if(localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 function App() {
   return (
     <AuthState>
     <AlertState>
+    <HouseState>
       <Router>
         <div>
-          <Switch >
+          <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
@@ -26,6 +33,7 @@ function App() {
           </Switch>
         </div>
       </Router>
+    </HouseState>
     </AlertState>
     </AuthState>
 

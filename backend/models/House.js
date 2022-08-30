@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ContactSchema = new Schema({
 	realtor: {
 		type: Schema.Types.ObjectId,
-		ref: 'realtor'
+		ref: 'user'
 	},
 	title: {
 		type: String,
@@ -21,7 +21,11 @@ const ContactSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	rooms: {
+	bed: {
+		type: Number,
+		required: true
+	},
+	bath: {
 		type: Number,
 		required: true
 	},
