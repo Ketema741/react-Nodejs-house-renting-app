@@ -130,23 +130,23 @@
     margin-bottom: 4rem;
 }
 
-.section-add {
+.add__row {
   margin-top:10rem;
   grid-column: center-start / center-end;
   background-color: #f7f7f7;
-  
-}
-@media only screen and (max-width: 56.25em) {
-  .section-add {
-    padding: 5rem 0rem ;
-  }
-}
-
-.add__row {
-  margin: 5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
-  grid-gap: 7rem;
+  grid-gap:7rem;
+  padding:2rem
+}
+.add__row:hover{
+  grid-gap: 10rem 7rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .add__row {
+    padding: 5rem 0rem ;
+    
+  }
 }
 
 .add__card {
@@ -157,8 +157,8 @@
   min-height: 70rem;
 }
 
+
 .home__side {
-  min-height: 70rem;
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
   position: absolute;
@@ -184,6 +184,7 @@
 .add__card:hover .home__side--front {
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
+ 
 }
 
 /*  back side rotation */
@@ -196,7 +197,7 @@
   background-color: #f9f7f6;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 3.5rem;
+  grid-row-gap: 2rem;
 }
 
 .home__img {
@@ -268,14 +269,10 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
+ 
 }
 
-.add-home {
-  background-color: #f9f7f6;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 3.5rem;
-}
+
 
 .add__row {
   max-width: 114rem;
@@ -333,13 +330,11 @@
 }
 
 .add__form {
-  min-height: 70rem;
-  padding: 1.5rem;
+  padding: 1rem;
   width: 55rem;
 }
 
 .form {
-    margin: 0.5rem 0;
     font-weight: 100;
 }
 
@@ -379,7 +374,7 @@
   font-weight: 700;
   color: rgb(62, 62, 62);
   margin-left: 2rem;
-  margin-top: 0.7rem;
+  margin-top: 0.1rem;
   display: block;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -391,18 +386,21 @@
   -webkit-transform: translateY(-4rem);
   transform: translateY(-4rem);
 }
+.filepond--wrapper{
+  width:90%;
+}
 
 .form__input--grid-1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 2rem;
+  grid-row-gap: 1rem;
 }
 
 .form__input--grid-2 {
   width: 96%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 2rem;
+
 }
 
 .home__price-box {

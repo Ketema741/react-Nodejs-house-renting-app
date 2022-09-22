@@ -6,6 +6,14 @@ const ContactSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'user'
 	},
+	image: {
+		type:[Buffer],
+		required:true
+	},
+	imageType: {
+		type:String,
+		required:true
+	},
 	title: {
 		type: String,
 		required: true
@@ -44,7 +52,7 @@ const ContactSchema = new Schema({
 		required: true
 	},
 	Neighborhood: {
-		type: String,
+		type: [String],
 	},
 	date: {
 		type: Date,

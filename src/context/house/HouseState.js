@@ -46,7 +46,7 @@ const Housestate = (props) => {
   };
 
   // add house
-  const addHouse = async(house)=>{
+  const addHouse = async (house) => {
     const config = {
       headers:{
         "Content-Type":"application/json"

@@ -7,6 +7,8 @@ import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import HomeForm from './components/houses/HomeForm';
+import HomeDetail from './components/detail/HomeDetail';
+import RealtorDetail from './components/detail/RealtorDetail';
 
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
@@ -30,6 +32,8 @@ function App() {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/form' component={HomeForm} />
+            <Route exact path='/detail' component={HomeDetail} />
+            <Route exact path='/realtor' component={RealtorDetail} />
           </Switch>
         </div>
       </Router>

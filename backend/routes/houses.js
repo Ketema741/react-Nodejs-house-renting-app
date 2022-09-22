@@ -4,6 +4,7 @@ const realtorAuth = require('../middleware/realtorAuth');
 const { check, validationResult } = require('express-validator');
 
 const House = require('../models/House');
+const imageMimeTypes = ['image/jpeg','image/png','images/gi']
 
 // @route     GET api/Houses
 // @desc      Get all Houses
@@ -50,6 +51,7 @@ router.post(
 
     const { 
       title, 
+      filepond,
       description, 
       location, 
       area, 
@@ -61,6 +63,7 @@ router.post(
       yearBuilt,
       Neighborhood
      } = req.body;
+    
 
     try {
       const newHouse = new House({
@@ -77,6 +80,7 @@ router.post(
         Neighborhood,
         realtor: req.realtor.id
       });
+      SaveHouse(newHouse, filepond)
 
       const house = await newHouse.save();
 
@@ -87,6 +91,15 @@ router.post(
     }
   }
 );
+
+const SaveHouse = (house, encodedImage) => {
+  if(encodedImage == null) return
+  const image = JSON.parse(encodedImage)
+  if(image !== null && imageMimeTypes.includes(image.type)){
+    house.image = new Buffer.from(image.data, 'base64')
+    house.imageType = image.type
+  }
+}
 
 // @route     PUT api/house/:id
 // @desc      Update house

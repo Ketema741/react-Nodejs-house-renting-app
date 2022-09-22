@@ -1,0 +1,151 @@
+.realtor__container {
+    display: grid;
+    grid-template-rows: 45vh repeat(2, min-content);
+    grid-template-columns: [sidebar-start] 10rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    grid-row-gap: 8rem;
+}
+
+@media only screen and (max-width:50em) {
+    .realtor__container {
+        grid-template-rows: 45vh repeat(3, min-content);
+        grid-row-gap: 0rem;
+    }
+}
+
+
+/*
+@media only screen and (max-width: 50em) {
+    .realtor__container {
+        grid-template-rows: 6rem calc(100vh - 6rem);
+    }
+}
+*/
+
+.realtor__header {
+    background-color: #54483A;
+    grid-column: full-start / col-end 6;
+    grid-row: 1 / 2;
+    background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public//img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+    padding: 8rem;
+    padding-top: 4rem;
+    display: grid;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
+    grid-row-gap: 1.5rem;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 50em) {
+    .realtor__header {
+        grid-column: full-start / full-end;
+        grid-row: 1 / 2;
+    }
+}
+
+@media only screen and (max-width: 37.5em) {
+    .realtor__header {
+        padding: 5rem;
+    }
+}
+
+.sdbar {
+    background-color: rgba(16, 29, 44, 0.93);
+    grid-row: 1 / -1;
+    grid-column: sidebar-start / sidebar-end;
+}
+
+.top__realtors {
+    background-color: #101d2c;
+    grid-column: col-start 7 / full-end;
+    grid-row: 1;
+    padding: 10rem 3rem 3rem;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    grid-row-gap: .5rem;
+}
+
+@media only screen and (max-width: 50em) {
+    .top__realtors {
+        grid-column: full-start / full-end;
+        grid-row: 3;
+    }
+}
+
+.realtors__list {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 2rem;
+    grid-row-gap: 3vh;
+    align-items: center;
+}
+
+@media only screen and (max-width: 50em) {
+    .realtors__list {
+        grid-template-columns: repeat(3, min-content max-content);
+    }
+}
+
+@media only screen and (max-width: 37.5em) {
+    .realtors__list {
+        grid-template-columns: min-content max-content;
+    }
+}
+
+.realtors__img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: block;
+}
+
+.realtors__sold {
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: -3px;
+}
+
+.realtors {
+    grid-column: center-start/ center-end;
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr);
+    grid-row-gap: 1rem;
+}
+
+.realtor {
+    background-color: #f2f2f4;
+    padding: 2rem;
+}
+
+.feature {
+    float: center;
+    width: 50%;
+    margin-bottom: 6rem;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+}
+
+@supports (display: grid) {
+    .feature {
+        width: auto;
+        margin-bottom: 0;
+    }
+}
+
+.feature__icon {
+    fill: #c69963;
+    width: 8rem;
+    height: 8rem;
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+}
+.realtor__footer {
+    background-color: #101d2c;
+    grid-column: full-start / full-end;
+   
+}

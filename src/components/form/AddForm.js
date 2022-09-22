@@ -1,6 +1,20 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
 import HouseContext from "../../context/house/houseContext";
 
+// Import React FilePond
+import { FilePond, registerPlugin } from "react-filepond";
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+// Register the plugins
+registerPlugin(
+  FilePondPluginImageExifOrientation, 
+  FilePondPluginImagePreview,
+  
+);
 
 
 
@@ -40,6 +54,7 @@ const AddForm = () => {
       const {
         title,
         description,
+        
         location,
         area,
         bed,
@@ -49,43 +64,52 @@ const AddForm = () => {
         garage,
         yearBuilt,
       } = house;
+
+
+    const [files, setFiles] = useState([])
+
+    const FileUpload = ()  => {
+        return (
+            <FilePond 
+            allowMultiple={true}
+            allowReorder={true}
+            files={files}
+            name='files'
+            allowImageCrop={true}
+            allowImageTransform={true}
+            imageCropAspectRatio={'1:1'}
+            onupdatefiles={setFiles(files)}
+            />
+        )
+    }
     
-      const onChange = (e) =>
+    const onChange = (e) =>{
         setHouse({ ...house, [e.target.name]: e.target.value });
+        console.log(e.target.value)
+    }
+
     
-      console.log(title);
-    
-      // add house
-      const onSubmit = (e) => {
+    // add house
+    const onSubmitHandler = (e) => {
         e.preventDefault();
-        addHouse ({
-          title,
-          description,
-          location,
-          area,
-          bed,
-          bath,
-          price,
-          propertyType,
-          garage,
-          yearBuilt,
-        });
-      };
+        console.log(files)
+    };
 
     return (
         <section className="add">
             <div className="add-home"> 
                 <div className="add__form">
-                    <form className="form" onSubmit={onSubmit}>
-                        <input onChange={onChange} type="file" className="form__input" placeholder="image" name="image" id="image" required 
-                        />
+                    <form className="form" onSubmit={onSubmitHandler}>
+                        <div className="form__input">
+                            <FileUpload  />
+                        </div>
                         <label htmlFor="image" className="form__label">image</label>
                         
                         <div className=" form__input--grid-1">
                             <div className="form__input--col-1">
                                 <input onChange={onChange} value={title} type="text" className="form__input"  placeholder="House title" name="title"  id="title" required
                                 />
-                                <label htmlFor="title" className="form__label">House Name</label>
+                                <label htmlFor="title" className="form__label">House Name </label>
                             </div>
                             <div className=" form__input--col-1">
                                 <input onChange={onChange} value={propertyType} type="text" className="form__input" placeholder="Property Type " name="propertyType" id="propertyType" required
@@ -152,7 +176,7 @@ const AddForm = () => {
                             House description
                         </label>
 
-                        <input type="submit" value="Add" name="add" className="btn btn--green" />
+                        <input type="submit" value="submit" name="submit" className="btn btn--green" />
                     </form>
                 </div>  {/* add__form end*/}
             </div>  {/* add-home end*/}

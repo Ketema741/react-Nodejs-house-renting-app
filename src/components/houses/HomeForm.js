@@ -9,7 +9,7 @@ import { AiOutlineAreaChart  } from 'react-icons/ai'
 import { GiFamilyHouse  } from 'react-icons/gi'
 
 import "../../css/HouseForm.css";
-import AddForm from '../form/AddForm'
+import AddForm from '../form/AddForm';
 
 const HomeForm = () => {
   return (
@@ -37,70 +37,120 @@ const HomeForm = () => {
             <button className="btn">Ketema Girma</button>
         </div>
 
-        <section class="section-add" id="section-add">
-            <div class="add__row">
+        <div class="add__row">
             <div class="add__card">
-                    
-            <div class="home__side home__side--front">
-                <img src="img/gal-1.jpeg" alt='gal-1' class="home__img" />
-                <h5 class="home__name">cozy country house</h5>
-                <div class="home__location"> 
-                    <FaMap  />
-                    <p>Addis</p> 
-                </div>
-                <div class="home__rooms"> 
-                    <GiFamilyHouse />
-                    <p>3 rooms</p>  
-                </div>
-                <div class="home__area">
-                    <AiOutlineAreaChart /> 
-                    <p> 345 m<sup>2</sup> </p> 
-                </div>
-                <div class="home__price"> 
-                    <GiHouseKeys />
-                    <p>2342 ETB</p> 
-                </div>
-                <a class="btn home__btn" href="realtro"> Delete </a>
-            </div>
-
-            <div class="home__side home__side--back home__side--back-1">
-                <AddForm />
-            </div>
-
-        </div> {/* add__card end*/}
-
-                <div class="add__card">
-                    
-                    <div class="home__side home__side--front">
-                        <img src="img/gal-1.jpeg" alt='gal-1' class="home__img" />
-                        <h5 class="home__name">cozy country house</h5>
-                        <div class="home__location"> 
-                            <FaMap  />
-                            <p>Addis</p> 
-                        </div>
-                        <div class="home__rooms"> 
-                            <GiFamilyHouse />
-                            <p>3 rooms</p>  
-                        </div>
-                        <div class="home__area">
-                            <AiOutlineAreaChart /> 
-                            <p> 345 m<sup>2</sup> </p> 
-                        </div>
-                        <div class="home__price"> 
-                            <GiHouseKeys />
-                            <p>2342 ETB</p> 
-                        </div>
-                        <a class="btn home__btn" href="realtro"> Delete </a>
+                <div class="home__side home__side--front">
+                    <img src="img/gal-1.jpeg" alt='gal-1' class="home__img" />
+                    <h5 class="home__name">cozy country house</h5>
+                    <div class="home__location"> 
+                        <FaMap  />
+                        <p>Addis</p> 
                     </div>
-
-                    <div class="home__side home__side--back home__side--back-1">
-                        <AddForm />
+                    <div class="home__rooms"> 
+                        <GiFamilyHouse />
+                        <p>3 rooms</p>  
                     </div>
-                </div> {/* add__card end*/}
-            </div> {/* add__row end*/}
+                    <div class="home__area">
+                        <AiOutlineAreaChart /> 
+                        <p> 345 m<sup>2</sup> </p> 
+                    </div>
+                    <div class="home__price"> 
+                        <GiHouseKeys />
+                        <p>2342 ETB</p> 
+                    </div>
+                    <a class="btn home__btn" href="realtro"> Delete </a>
+                </div>
 
-        </section>
+                <div class="home__side home__side--back home__side--back-1">
+                    <AddForm />
+                </div>
+            </div> {/* add__card end*/}
 
+            <div class="add__card">
+                <div class="home__side home__side--front">
+                    <img src="img/gal-1.jpeg" alt='gal-1' class="home__img" />
+                    <h5 class="home__name">cozy country house</h5>
+                    <div class="home__location"> 
+                        <FaMap  />
+                        <p>Addis</p> 
+                    </div>
+                    <div class="home__rooms"> 
+                        <GiFamilyHouse />
+                        <p>3 rooms</p>  
+                    </div>
+                    <div class="home__area">
+                        <AiOutlineAreaChart /> 
+                        <p> 345 m<sup>2</sup> </p> 
+                    </div>
+                    <div class="home__price"> 
+                        <GiHouseKeys />
+                        <p>2342 ETB</p> 
+                    </div>
+                    <a class="btn home__btn" href="realtro"> Delete </a>
+                </div>
+
+                <div class="home__side home__side--back home__side--back-1">
+                    <AddForm />
+                </div>
+            </div> {/* add__card end*/}
+
+            <div class="add__card">
+                <div class="home__side home__side--front">
+                    <img src="img/gal-1.jpeg" alt='gal-1' class="home__img" />
+                    <h5 class="home__name">cozy country house</h5>
+                    <div class="home__location"> 
+                        <FaMap  />
+                        <p>Addis</p> 
+                    </div>
+                    <div class="home__rooms"> 
+                        <GiFamilyHouse />
+                        <p>3 rooms</p>  
+                    </div>
+                    <div class="home__area">
+                        <AiOutlineAreaChart /> 
+                        <p> 345 m<sup>2</sup> </p> 
+                    </div>
+                    <div class="home__price"> 
+                        <GiHouseKeys />
+                        <p>2342 ETB</p> 
+                    </div>
+                    <a class="btn home__btn" href="realtro"> Delete </a>
+                </div>
+
+                <div class="home__side home__side--back home__side--back-1">
+                    <AddForm />
+                </div>
+
+            </div> {/* add__card end*/}
+
+            <div class="add__card">
+                <div class="home__side home__side--front">
+                    <img src="img/gal-1.jpeg" alt='gal-1' class="home__img" />
+                    <h5 class="home__name">cozy country house</h5>
+                    <div class="home__location"> 
+                        <FaMap  />
+                        <p>Addis</p> 
+                    </div>
+                    <div class="home__rooms"> 
+                        <GiFamilyHouse />
+                        <p>3 rooms</p>  
+                    </div>
+                    <div class="home__area">
+                        <AiOutlineAreaChart /> 
+                        <p> 345 m<sup>2</sup> </p> 
+                    </div>
+                    <div class="home__price"> 
+                        <GiHouseKeys />
+                        <p>2342 ETB</p> 
+                    </div>
+                    <a class="btn home__btn" href="realtro"> Delete </a>
+                </div>
+
+                <div class="home__side home__side--back home__side--back-1">
+                    <AddForm />
+                </div>
+            </div> {/* add__card end*/}
+        </div> {/* add__row end*/}
     {/* add-container end*/}
     </div> 
   );
