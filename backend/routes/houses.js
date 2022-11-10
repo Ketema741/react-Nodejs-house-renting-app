@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const realtorAuth = require('../middleware/realtorAuth');
 const { check, validationResult } = require('express-validator');
+const cloudinary = require('cloudinary')
+const config = require('config');
+
+
 
 const House = require('../models/House');
-const imageMimeTypes = ['image/jpeg','image/png','images/gi']
 
 // @route     GET api/Houses
 // @desc      Get all Houses
@@ -51,7 +54,7 @@ router.post(
 
     const { 
       title, 
-      filepond,
+      files,
       description, 
       location, 
       area, 
@@ -61,45 +64,50 @@ router.post(
       propertyType,
       garage,
       yearBuilt,
-      Neighborhood
+      image,
+      
      } = req.body;
     
-
-    try {
-      const newHouse = new House({
-        title,
-        description, 
-        location, 
-        area, 
-        bed,
-        bath, 
-        price, 
-        propertyType,
-        garage,
-        yearBuilt,
-        Neighborhood,
-        realtor: req.realtor.id
+     const encodedImage = JSON.stringify({image})
+     try {
+      const uploadResponse = await cloudinary.uploader.upload(encodedImage, {
+        upload_preset: 'house-renting',
+        overwrite: true,
+        invalidate: true,
+        width: 810, height: 456, crop: "fill"
       });
-      SaveHouse(newHouse, filepond)
-
-      const house = await newHouse.save();
-
-      res.json(house);
+      console.log(uploadResponse);
+      res.json({ msg: 'yaya' });
     } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
+      console.error(err);
+      res.status(500).json({ err: 'Something went wrong' });
     }
+    // try {
+    //   const newHouse = new House({
+    //     title,
+    //     description, 
+    //     location, 
+    //     area, 
+    //     bed,
+    //     bath, 
+    //     price, 
+    //     propertyType,
+    //     garage,
+    //     yearBuilt,
+    //     realtor: req.realtor.id
+    //   });
+      
+    //   const house = await newHouse.save();
+
+    //   res.json(house);
+    // } catch (err) {
+    //   console.error(err.message);
+    //   res.status(500).send('Server Error');
+    // }
   }
 );
 
-const SaveHouse = (house, encodedImage) => {
-  if(encodedImage == null) return
-  const image = JSON.parse(encodedImage)
-  if(image !== null && imageMimeTypes.includes(image.type)){
-    house.image = new Buffer.from(image.data, 'base64')
-    house.imageType = image.type
-  }
-}
+
 
 // @route     PUT api/house/:id
 // @desc      Update house
@@ -176,6 +184,23 @@ router.delete('/:id', realtorAuth, async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
+  }
+});
+
+
+cloudinary.config ({
+  cloud_name: config.get("cloud_name"),
+  api_key: config.get("api_key"),
+  api_secret: config.get("api_secret"),
+})
+router.post('/image', async (req, res) => {
+  const { public_id } = req.body
+  try {
+    await cloudinary.uploader.destroy(public_id);
+    res.status(200).send();
+  } catch (err) {
+    console.error(err.message);
+    res.status(400).send('server Error');
   }
 });
 

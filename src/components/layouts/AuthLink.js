@@ -53,7 +53,6 @@ const AuthLink = () => {
     );
     return (
       <div className="header__nav">
-        <img src="img/logo.png" alt="logo" className="header__logo" />
         <nav className="user-nav">
             <div className="user-nav__icon-box">
                 <FaHeart />

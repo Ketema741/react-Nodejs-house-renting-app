@@ -6,13 +6,9 @@ const ContactSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'user'
 	},
-	image: {
-		type:[Buffer],
-		required:true
-	},
-	imageType: {
-		type:String,
-		required:true
+	images: {
+		type: [String],
+		required: true
 	},
 	title: {
 		type: String,

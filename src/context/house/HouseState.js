@@ -46,20 +46,37 @@ const Housestate = (props) => {
   };
 
   // add house
-  const addHouse = async (house) => {
+  const addHouse = async (house,images) => {
+    house.houseImages = images
+    console.log(house)
     const config = {
-      headers:{
-        "Content-Type":"application/json"
+      headers: {
+        "Content-Type" : "application/json"
       }
     }
-
     try {
-      const res = await axios.post('api/houses', house, config)
-      dispatch({ type:ADD_HOUSE, payload:res.data })
+      // const res = await axios.post('api/houses', house, config)
+      // dispatch({ type: ADD_HOUSE, payload:res.data })
     } catch(error) {
-      dispatch({ type:HOUSE_ERROR })
+      dispatch({ type : HOUSE_ERROR })
+    } 
+  }
+
+  const removeImage = async (public_id) => {
+    const id_obj = {
+      public_id : public_id
     }
-  
+    const config = {
+      headers : { 
+        "Content-Type": "application/json"
+      }
+    }
+    try { 
+      const res = await axios.post(`api/houses/image`,id_obj, config)
+      console.log(res)
+    } catch(error) {
+      dispatch({ type: HOUSE_ERROR })
+    }
   }
 
 
@@ -139,6 +156,7 @@ const Housestate = (props) => {
        addHouse,
        clearHouses,
        deleteHouse,
+       removeImage,
        setCurrent,
        clearCurrent,
        updateHouse,

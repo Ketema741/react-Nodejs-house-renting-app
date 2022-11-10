@@ -51,28 +51,49 @@ const RealtorDetail = () => {
 
         <section className="realtors" id="realtors">
             <div className="realtor">
-                <div className="feature">
-                <img className="feature__icon realX" src="" alt="realtor" />
-                <h4 className="realtor__name">Ketema</h4>
-                    <p className="feature__text">12house sold</p>
-                    <p className="feature__text realtor__active">Active</p>
-                    <p className="feature__text realtorX__text">Lives in: Addis</p>
-                    <p className="feature__text ">kgirma363@gmail.com</p>
-                    <p className="feature__text ">0912323811</p>
+                <img className="realtor__img" src="img/realtor-2.jpg" alt="realtor" />
+                <h4 className="realtor__name">Ketema Girma</h4>
+            
+                <div className="realtor__contact">
+                    <h1 className="realtor_desc">Senior house realtror </h1>
+                    <ul className="realtor__contact-list">
+                        <li className="realtor__email ">kgirma363@gmail.com</li>
+                        <li className="realtor__phone ">0912323811</li>
+                    </ul>
                 </div>
+
+                <div className="realtor__status">
+                    <ul className="realtor__status-list">
+                        <li className="realtor__active">1d ago</li>
+                        <li className="realtor__location"> Addis</li>
+                        <li className="realtors__sold">12 house sold</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div className="realtor">
+                <img className="realtor__img" src="img/realtor-2.jpg" alt="realtor" />
+                <h4 className="realtor__name">Ketema Girma</h4>
+            
+                <div className="realtor__contact">
+                    <h1 className="realtor_desc">Senior house realtror </h1>
+                    <ul className="realtor__contact-list">
+                        <li className="realtor__email ">kgirma363@gmail.com</li>
+                        <li className="realtor__phone ">0912323811</li>
+                    </ul>
+                </div>
+
+                <div className="realtor__status">
+                    <ul className="realtor__status-list">
+                        <li className="realtor__active">1d ago</li>
+                        <li className="realtor__location"> Addis</li>
+                        <li className="realtors__sold">12 house sold</li>
+                    </ul>
+                </div>
+
             </div>
 
-            <div className="realtor">
-                <div className="feature">
-                <img className="feature__icon realX" src="" alt="realtor" />
-                <h4 className="realtor__name">Ketema</h4>
-                    <p className="feature__text">12house sold</p>
-                    <p className="feature__text realtor__active">Active</p>
-                    <p className="feature__text realtorX__text">Lives in: Addis</p>
-                    <p className="feature__text ">kgirma363@gmail.com</p>
-                    <p className="feature__text ">0912323811</p>
-                </div>
-            </div>
+             
         </section>
 
         <footer className="realtor__footer">

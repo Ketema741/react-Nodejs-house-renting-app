@@ -3,12 +3,15 @@
     grid-template-rows: 45vh repeat(2, min-content);
     grid-template-columns: [sidebar-start] 10rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
     grid-row-gap: 8rem;
+    background-color:rgba(16, 29, 44, 0.526);
 }
 
 @media only screen and (max-width:50em) {
     .realtor__container {
         grid-template-rows: 45vh repeat(3, min-content);
         grid-row-gap: 0rem;
+        background-color:#fff;
+
     }
 }
 
@@ -22,7 +25,6 @@
 */
 
 .realtor__header {
-    background-color: #54483A;
     grid-column: full-start / col-end 6;
     grid-row: 1 / 2;
     background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public//img/hero.jpeg);
@@ -89,11 +91,7 @@
     }
 }
 
-@media only screen and (max-width: 37.5em) {
-    .realtors__list {
-        grid-template-columns: min-content max-content;
-    }
-}
+
 
 .realtors__img {
     width: 5rem;
@@ -102,50 +100,146 @@
     display: block;
 }
 
+
+.realtors {
+    grid-column: center-start / center-end;
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr);
+    grid-row-gap: 1rem;
+    font-size:  2rem;
+}
+@media only screen and (max-width: 65rem) {
+    .realtors {
+        margin-top:5rem;
+        margin-bottom:5rem;
+        grid-gap: 5rem;
+        font-size:  1.5rem;
+    }
+    
+}
+.realtor {
+    background-image: linear-gradient(rgba(16, 29, 44, 0.9), rgba(16, 29, 44, 0.93)), url(/public//img/house-4.jpeg);
+    padding: 2rem;
+    min-height: 15rem;
+    position:relative;
+    border-radius:1rem;
+}
+.realtor__name{
+    color: #fff;
+    font-weight: bold;
+}
+@media only screen and (max-width: 65rem) {
+    .realtor__name{
+        position: relative;
+        top:-.5rem;
+        left: 10rem;
+    }
+}
 .realtors__sold {
     text-transform: uppercase;
     color: #aaa;
     margin-top: -3px;
 }
+.realtor_desc{
+    font-weight: 500;
+    color: #c69963;
 
-.realtors {
-    grid-column: center-start/ center-end;
-    display: grid;
-    grid-template-columns: minmax(min-content, 1fr);
-    grid-row-gap: 1rem;
+
 }
-
-.realtor {
-    background-color: #f2f2f4;
-    padding: 2rem;
+.realtor_desc,
+.realtor__status,
+.realtor__name {
+    margin-left: 11rem;
 }
-
-.feature {
-    float: center;
-    width: 50%;
-    margin-bottom: 6rem;
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    grid-row-gap: 1.5rem;
-    grid-column-gap: 2.5rem;
-}
-
-@supports (display: grid) {
-    .feature {
-        width: auto;
-        margin-bottom: 0;
+@media only screen and (max-width: 65rem) {
+    .realtor_desc,
+    .realtor__status,
+    .realtor__name {
+        margin-left: 2rem;
     }
 }
 
-.feature__icon {
-    fill: #c69963;
+@media only screen and (max-width: 65rem) {
+    .realtor__status {
+        margin-top: 5rem;
+    }
+}
+
+
+
+.realtor_desc,
+.realtor__contact-list{
+    display:inline;
+}
+
+@media only screen and (max-width: 65rem) {
+    .realtor_desc,
+.realtor__contact-list{
+    display: block;
+}
+}
+
+.realtor__status-list li::marker{
+    content:initial;
+    overflow-x:none
+
+}
+.realtor__location:before,
+.realtors__sold:before {
+    content:'\2022';
+    margin-right: .5rem
+}
+
+.realtor__email,
+.realtor__phone{
+    display:inline;
+    color: #c69963;
+    background-color:rgba(16, 29, 44);
+    margin-left:1rem;
+    padding:1rem;
+    
+}
+.realtor__active,
+.realtor__location,
+.realtors__sold {
+    display:inline;
+    margin-right:2rem;
+    color: #aaa;
+}
+
+.realtor__contact-list {
+    position: relative;
+    float: right;    
+}
+
+@media only screen and (max-width: 65rem) {
+    .realtor__contact-list {
+        position: relative;
+        float: left; 
+        margin-top:1rem;  
+        margin-left:1rem;  
+    }
+}
+.realtor .realtor__img {
     width: 8rem;
     height: 8rem;
-    grid-row: 1 / span 2;
-    transform: translateY(-1rem);
+    border-radius: 50%;
+    position: absolute;
+    top: 3.5rem;
+    left: 2rem
+}
+
+@media only screen and (max-width: 65rem) {
+    .realtor .realtor__img {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        position: absolute;
+        top: -4rem;
+        left: 2rem
+    }
 }
 .realtor__footer {
     background-color: #101d2c;
     grid-column: full-start / full-end;
-   
 }
