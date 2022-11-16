@@ -1,5 +1,3 @@
-
-
 .header__nav {
     font-size: 1.4rem;
     height: 7rem;
@@ -7,9 +5,6 @@
     align-items: center;
     justify-content: flex-end;
 }
-
-
-
 
 .search__input {
     font-family: inherit;
@@ -71,8 +66,9 @@
     align-items: center
 }
 
-.user-nav>*:hover {
-    background-color: var(--color-grey-light-2)
+.user-nav>*:hover,
+.user-nav__icon-box:hover {
+    background-color: #101d2cbd
 }
 
 .user-nav__icon-box {
@@ -98,6 +94,13 @@
     display: flex;
     justify-content: center;
     align-items: center
+}
+
+.nav__link {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 1.75rem;
 }
 
 .user-nav__user-photo {

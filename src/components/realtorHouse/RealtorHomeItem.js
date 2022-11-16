@@ -20,7 +20,7 @@ const RealtorHomeItem = ({ home }) => {
     return(
            <div className="add__card">
                <div className="home__side home__side--front">
-                   <img src={home.houseImages[0].url} alt='gal-1' className="home__img" />
+                   <img src={home.houseImages[0].url} alt='gal-1' className="home__img realtor__img" />
                    <h5 className="home__name">{ home.title }</h5>
                    <div className="home__location"> 
                        <FaMap  />

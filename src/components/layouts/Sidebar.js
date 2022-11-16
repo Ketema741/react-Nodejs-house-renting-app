@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { AiOutlineHome } from 'react-icons/ai'
 import { MdOutlineSell } from 'react-icons/md'
 import { BsCreditCard2Back } from 'react-icons/bs'
@@ -9,35 +10,36 @@ const Sidebar = () => {
         <nav className="sdbar">
             <ul className="sd-nav">
                 <li className="sd-nav__item sd-nav__item--active">
-                    <a href="/" className="sd-nav__link">
+                    <Link to="/" className="sd-nav__link">
                         <AiOutlineHome className="sd-nav__icon" />
                         <span>HOME</span>
-                    </a>
+                    </Link>
                 </li>
                 
                 <li className="sd-nav__item">
-                    <a href="realtors" className="sd-nav__link">
+                    <Link to="/rent" className="sd-nav__link">
                       <BsCalendar2Month className="sd-nav__icon" />
                       <span>Rent</span>
-                    </a>
+                    </Link>
                 </li>
 
+
                 <li className="sd-nav__item">
-                    <a href="/buy" className="sd-nav__link">
+                    <Link to="/sell" className="sd-nav__link">
                         <BsCreditCard2Back className="sd-nav__icon" />
-                        <span>Buy</span>
-                    </a>
+                        <span>Buy </span>
+                    </Link>
                 </li>
                 <li className="sd-nav__item">
-                    <a href="/sell" className="sd-nav__link">
+                    <Link to="/sell" className="sd-nav__link">
                         <MdOutlineSell className="sd-nav__icon" />
                         <span>Sell </span>
-                    </a>
+                    </Link>
                 </li>
                 <li className="sd-nav__item">
-                    <a href="/realtordetail" className="sd-nav__link">
+                    <Link to="/realtors" className="sd-nav__link">
                         <span>Realtor </span>
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>

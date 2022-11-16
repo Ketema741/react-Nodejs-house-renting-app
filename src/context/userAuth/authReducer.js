@@ -14,25 +14,25 @@ import {
       case REALTOR_LOADED:
         return {
           ...state,
-          isAuthenticated: true,
-          loading: false,
-          realtor: action.payload
+          isUserAuthenticated: true,
+          userLoading: false,
+          user: action.payload
         };
       case REGISTER_SUCCESS:
-        localStorage.setItem('token', action.payload.token)
+        localStorage.setItem('usertoken', action.payload.token)
         return {
           ...state,
           ...action.payload,
-          isAuthenticated:true,
-          loading:false
+          isUserAuthenticated:true,
+          userLoading:false
         }
       case LOGIN_SUCCESS:
-        localStorage.setItem('token', action.payload.token)
+        localStorage.setItem('usertoken', action.payload.token)
         return {
           ...state,
           ...action.payload,
-          isAuthenticated: true,
-          loading: false
+          isUserAuthenticated: true,
+          userLoading: false
         };
       case REGISTER_FAIL:
       case AUTH_ERROR:
@@ -41,10 +41,10 @@ import {
         localStorage.removeItem('token')
         return {
           ...state,
-          token: null,
-          isAuthenticated: false,
-          loading: false,
-          realtor: null,
+          userToken: null,
+          isUserAuthenticated: false,
+          userLoading: false,
+          user: null,
           error: action.payload
         };
       case CLEAR_ERRORS:

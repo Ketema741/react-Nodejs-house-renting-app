@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import axios from 'axios'
 import setAuthToken from '../../utils/setAuthToken'
 
@@ -11,16 +11,17 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT,
-  CLEAR_ERRORS
+  LOGOUT
+  
 } from '../types';
 
 const AuthState = (props) => {
     const initialState = {
       realtor: null,
-      token: localStorage.getItem('token'),
-      isAuthenticated: null,
-      loading: true,
+      realtorToken: localStorage.getItem('realtortoken'),
+      isRealtorAuthenticated: null,
+      isUserAuthenticated: null,
+      realtorLoading: true,
       error: null
     };
   
@@ -28,7 +29,7 @@ const AuthState = (props) => {
     
     
     // Register realtor
-    const register = async (formData) => {
+    const realtorRegister = async (formData) => {
       const config = {
         headers: {
           "Content-Type": 'application/json'
@@ -50,7 +51,7 @@ const AuthState = (props) => {
 
 
     // login realtor
-    const login = async (formData) => {
+    const realtorLogin = async (formData) => {
       const config = {
         headers: {
           "Content-Type": 'application/json'
@@ -77,8 +78,8 @@ const AuthState = (props) => {
 
     // load realtor
     const loadRealtor = async () => {
-      if(localStorage.token) {
-        setAuthToken(localStorage.token)
+      if(localStorage.realtortoken) {
+        setAuthToken(localStorage.realtortoken, 'realtortoken')
       }
       const res = await axios.get('api/authRealtor')
       
@@ -97,18 +98,18 @@ const AuthState = (props) => {
     // clear error
    
     // set token on initial app loading
-    setAuthToken(state.token);
+    setAuthToken(state.realtorToken, 'realtortoken');
    
 
     // load realtor on first run or refresh
-    if (state.loading) {
+    if (state.realtorLoading) {
       loadRealtor();
     }
 
     // 'watch' state.token and set headers and local storage on any change
     useEffect(() => {
-      setAuthToken(state.token);
-    }, [state.token]);
+      setAuthToken(state.realtorToken, 'realtortoken');
+    }, [state.realtorToken]);
    
 
     // AuthState Provider Component
@@ -116,9 +117,9 @@ const AuthState = (props) => {
       <AuthContext.Provider value={{
         realtor: state.realtor,
         error: state.error,
-        isAuthenticated: state.isAuthenticated,
-        register,
-        login,
+        isRealtorAuthenticated: state.isRealtorAuthenticated,
+        realtorRegister,
+        realtorLogin,
         logout,
         loadRealtor,
       }}>

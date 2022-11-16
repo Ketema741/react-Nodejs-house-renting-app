@@ -1,13 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react'
-import './login.css'
+import { useNavigate } from 'react-router-dom';
+
 import Alert from '../layouts/Alerts'
+
 import AlertContext from '../../context/alert/alertContext';
-import AuthContext from '../../context/auth/authContext'
+import AuthContext from '../../context/realtorAuth/authContext'
 
+import '../../css/login.css'
 
-const Login = (props) => {
+const Login = () => {
+    
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
+    const navigate = useNavigate()
+    
     const [realtor, setRealtor] = useState({
         name:'',
         email: '',
@@ -19,64 +25,62 @@ const Login = (props) => {
         experienceYear: '',
         description: '',
         phone: null
-      });
+    });
     
-      const {  
+    const {  
+        name, 
+        email, 
+        password, 
+        password2, 
+        phone,
+        location,
+        specializations,
+        activityRange,
+        experienceYear,
+        description,
+    } = realtor;
+
+    const { setAlert } = alertContext
+    const { realtorRegister, error, isRealtorAuthenticated } = authContext
+
+    useEffect(() => {
+    if(isRealtorAuthenticated) {
+        if(isRealtorAuthenticated) {
+            navigate('/realtordashboard')
+        }
+    }
+    if(error === "realtor already exists") {
+        setAlert(error, 'danger')
+    }
+
+    // eslint-disable-next-line
+    }, [error, isRealtorAuthenticated,  props.history])
+
+    const onChange = (e) => setRealtor({ ...realtor, [e.target.name]: e.target.value });
+
+    const onSubmit = (e) => {
+    e.preventDefault();
+    if(name === '' || email === '' || password === '' || phone === ''){
+        setAlert('Please fill all field', 'danger')
+    }
+    else if( password !== password2 ) {
+        setAlert('password do not much', 'danger')
+    } else {
+        realtorRegister({ 
             name, 
             email, 
-            password, 
-            password2, 
-            phone,
+            phone, 
+            password,
             location,
             specializations,
             activityRange,
             experienceYear,
             description,
-
-        } = realtor;
-      const { setAlert } = alertContext
-      const { register,error, isAuthenticated } = authContext
-
-      useEffect(() => {
-        if(isAuthenticated){
-            if(isAuthenticated){
-                props.history.push('/realtorPage')
-              }
-        }
-        if(error === "realtor already exists"){
-          setAlert(error, 'danger')
-        }
+        })
+    }
+    };
     
-        // eslint-disable-next-line
-      }, [error, isAuthenticated,  props.history])
 
-      const onChange = (e) => setRealtor({ ...realtor, [e.target.name]: e.target.value });
-
-      const onSubmit = (e) => {
-        e.preventDefault();
-        if(name === '' || email === '' || password === '' || phone === ''){
-            setAlert('Please fill all field', 'danger')
-        }
-        else if( password !== password2 ) {
-            setAlert('password do not much', 'danger')
-        } else {
-            register({ 
-                name, 
-                email, 
-                phone, 
-                password,
-                location,
-                specializations,
-                activityRange,
-                experienceYear,
-                description,
-            })
-           
-        }
-        
-      };
-    
-  
     return (
         <div className="login-container" style={style}>
             <header className="login-header">

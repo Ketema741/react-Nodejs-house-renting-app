@@ -14,7 +14,7 @@ const Realtor = require('../models/Realtor');
 router.get('/', realtorAuth, async (req, res) => {
 	try {
 		const realtor = await Realtor.findById(req.realtor.id).select('-password');
-		res.json(realtor);
+		res.json(realtor); 
 
 	} catch (err) {
 		console.error(err.message);

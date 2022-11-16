@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom'
+import React, { Fragment, useContext } from 'react';
+import { Link } from 'react-router-dom'
 
-import AuthLink from '../layouts/AuthLink';
+import AuthLink from '../layouts/RealtorAuthLink';
 import Sidebar from '../layouts/Sidebar';
 import Footer from '../layouts/Footer';
 import Spinner from '../layouts/Spinner'
@@ -11,10 +11,9 @@ import HouseContext from '../../context/house/houseContext'
 import "../../css/HomeDetail.css";
 
 const HomeDetail = () => {
-    const { houseId } = useParams()
-    console.log(houseId)
+
     const houseContext = useContext(HouseContext)
-    const { house, getHouse } =  houseContext
+    const { house } =  houseContext
 
     
     return ( 

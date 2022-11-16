@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa'
 import { ImNotification } from 'react-icons/im'
 
-import AuthContext from '../../context/auth/authContext';
+import AuthContext from '../../context/realtorAuth/authContext';
 
 
 const AuthLink = () => {
     const authContext = useContext(AuthContext)
 
-    const { isAuthenticated, realtor, logout } = authContext
+    const { isRealtorAuthenticated, realtor, logout } = authContext
   
     const onLogout = () => {
       logout()
@@ -30,23 +30,16 @@ const AuthLink = () => {
           /> 
         </div>
   
-        <div className='nav__link'>
-          <Link  to='/login' onClick={onLogout}>
-            <span className='hide-sm'>Logout</span>
-          </Link>
-        </div>
+        <Link className='nav__link' to='/realtorlogin' onClick={onLogout}>
+        <span className='hide-sm'>Logout</span>
+        </Link>
       </Fragment>
     );
   
     const guestLinks = (
       <Fragment>
-        <div className='nav__link'>
-          <Link to='/register'>Register</Link>
-        </div>
-  
-        <div className='nav__link'>
-          <Link to='/login' >Login</Link>
-        </div>
+        <Link className='nav__link' to='/realtorregister'>Register</Link>
+        <Link className='nav__link' to='/realtorlogin' >Login</Link>
       </Fragment>
     );
     return (
@@ -66,7 +59,7 @@ const AuthLink = () => {
                 </span>
             </div>
 
-            {isAuthenticated? authLinks : guestLinks}
+            {isRealtorAuthenticated? authLinks : guestLinks}
         </nav>
       </div>
    )

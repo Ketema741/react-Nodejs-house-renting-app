@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react'
 
-import AuthLink from '../layouts/AuthLink'
+import AuthLink from '../layouts/RealtorAuthLink'
 import Sidebar from '../layouts/Sidebar'
 import Footer from '../layouts/Footer'
 
 import "../../css/Realtor.css";
 
 
-const RealtorDetail = () => {
+const Realtors = () => {
     return(
         <div className="realtor__container">
             <Fragment>
@@ -103,4 +103,4 @@ const RealtorDetail = () => {
     )
 }
 
-export default RealtorDetail;
+export default Realtors;

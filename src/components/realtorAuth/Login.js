@@ -1,14 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react'
-import './login.css'
+import { useNavigate } from 'react-router-dom';
+
 import Alert from '../layouts/Alerts'
 
 import AlertContext from '../../context/alert/alertContext';
-import AuthContext from '../../context/auth/authContext';
+import AuthContext from '../../context/realtorAuth/authContext';
+
+import '../../css/login.css'
 
 
 const Login = (props) => {
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [realtor, setRealtor] = useState({
       email: '',
@@ -17,19 +21,19 @@ const Login = (props) => {
   
     const { email, password } = realtor;
     const { setAlert } = alertContext
-    const { login, error, isAuthenticated } = authContext
+    const { realtorLogin, error, isRealtorAuthenticated } = authContext
   
     
     useEffect(() => {
-      if(isAuthenticated){
-        props.history.push('/realtordashbord')
+      if(isRealtorAuthenticated){
+        navigate('/realtordashboard')
       }
       if(error === "Invalid Credentials") {
         setAlert(error, 'danger')
       }
   
       // eslint-disable-next-line
-    }, [error, isAuthenticated,  props.history])
+    }, [error, isRealtorAuthenticated,  props.history])
     
       const onChange = (e) => setRealtor({ ...realtor, [e.target.name]: e.target.value });
 
@@ -39,7 +43,7 @@ const Login = (props) => {
             setAlert('Please fill all field', 'danger')
         }
         else {
-            login({ email, password })
+            realtorLogin({ email, password })
         }
       };
   

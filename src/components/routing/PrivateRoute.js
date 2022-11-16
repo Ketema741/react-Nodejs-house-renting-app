@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import AuthContext from '../../context/auth/authContext';
+import AuthContext from '../../context/realtorAuth/authContext';
 import Spinner from '../layouts/Spinner'
 
 const PrivateRoute = () => {
   const authState = useContext(AuthContext);
-  const { isAuthenticated, loading } = authState;
-  if (loading) return <Spinner />;
-  return isAuthenticated ? <Outlet /> : <Navigate to ={'/login'} />;
+  const { isRealtorAuthenticated, realtorLoading } = authState;
+  if (realtorLoading) return <Spinner />;
+  return isRealtorAuthenticated ? <Outlet /> : <Navigate to ={'/realtorlogin'} />;
 };
 
 export default PrivateRoute;
