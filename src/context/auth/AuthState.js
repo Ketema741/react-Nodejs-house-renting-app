@@ -7,7 +7,7 @@ import authReducer from './authReducer';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  USER_LOADED,
+  REALTOR_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -17,25 +17,25 @@ import {
 
 const AuthState = (props) => {
     const initialState = {
-      user:null,
-      token:localStorage.getItem('token'),
+      realtor: null,
+      token: localStorage.getItem('token'),
       isAuthenticated: null,
-      loading:true,
-      error:null
+      loading: true,
+      error: null
     };
   
     const [state, dispatch] = useReducer(authReducer, initialState);
     
     
-    // Register User
+    // Register realtor
     const register = async (formData) => {
       const config = {
         headers: {
-          "Content-Type":'application/json'
+          "Content-Type": 'application/json'
         }
       }
       try {
-        const res = await axios.post ('api/users', formData, config)
+        const res = await axios.post ('api/realtors', formData, config)
         dispatch ({
           type: REGISTER_SUCCESS,
           payload: res.data
@@ -49,7 +49,7 @@ const AuthState = (props) => {
     }
 
 
-    // login user
+    // login realtor
     const login = async (formData) => {
       const config = {
         headers: {
@@ -57,37 +57,36 @@ const AuthState = (props) => {
         }
       }
       try {
-        const res = await axios.post ('api/authUser', formData, config)
+        const res = await axios.post ('api/authRealtor', formData, config)
         dispatch ({
-          type:LOGIN_SUCCESS,
+          type: LOGIN_SUCCESS,
           payload: res.data
         })
-        loadUser();
+        loadRealtor();
       } catch(err) {
         dispatch ({
-          type:LOGIN_FAIL,
+          type: LOGIN_FAIL,
           payload: err.response.data.msg
         })
-        console.log('error ',err.response)
+        console.log('error ', err.response)
       }
     }
 
     // logout 
     const logout = () => dispatch({ type: LOGOUT })
 
-    // load user
-    const loadUser = async () => {
+    // load realtor
+    const loadRealtor = async () => {
       if(localStorage.token) {
         setAuthToken(localStorage.token)
       }
-      const res = await axios.get('api/authUser')
+      const res = await axios.get('api/authRealtor')
       
       try {
         dispatch ({
-          type: USER_LOADED,
+          type: REALTOR_LOADED,
           payload: res.data
         })
-        console.log(res.data)
       } catch(error) {
         dispatch ({
           type: AUTH_ERROR
@@ -101,9 +100,9 @@ const AuthState = (props) => {
     setAuthToken(state.token);
    
 
-    // load user on first run or refresh
+    // load realtor on first run or refresh
     if (state.loading) {
-      loadUser();
+      loadRealtor();
     }
 
     // 'watch' state.token and set headers and local storage on any change
@@ -115,13 +114,13 @@ const AuthState = (props) => {
     // AuthState Provider Component
     return (
       <AuthContext.Provider value={{
-        user: state.user,
+        realtor: state.realtor,
         error: state.error,
         isAuthenticated: state.isAuthenticated,
         register,
         login,
         logout,
-        loadUser,
+        loadRealtor,
       }}>
 
         {props.children}

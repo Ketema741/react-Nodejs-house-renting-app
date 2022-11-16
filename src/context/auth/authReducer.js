@@ -1,7 +1,7 @@
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    USER_LOADED,
+    REALTOR_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -11,12 +11,12 @@ import {
   
   const authReducer = (state, action) => {
     switch (action.type) {
-      case USER_LOADED:
+      case REALTOR_LOADED:
         return {
           ...state,
           isAuthenticated: true,
           loading: false,
-          user: action.payload
+          realtor: action.payload
         };
       case REGISTER_SUCCESS:
         localStorage.setItem('token', action.payload.token)
@@ -44,7 +44,7 @@ import {
           token: null,
           isAuthenticated: false,
           loading: false,
-          user: null,
+          realtor: null,
           error: action.payload
         };
       case CLEAR_ERRORS:

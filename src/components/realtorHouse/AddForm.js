@@ -1,46 +1,53 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import HouseContext from "../../context/house/houseContext";
 import CloudinaryUploadWidget from "../cloudinary/CloudinaryUploadWidget";
 
+const initialState = {
+    realtor: '',
+    title: "",
+    description: "",
+    location: "",
+    area: '',
+    bed: '',
+    bath:'',
+    price: '',
+    propertyType: "",
+    garage: '',
+    yearBuilt: '',
+    houseImages:null
+  };
 
 const AddForm = () => {
-    const initialState = {
-        realtor: '',
-        title: "",
-        description: "",
-        location: "",
-        area: '',
-        bed: '',
-        bath:'',
-        price: '',
-        propertyType: "",
-        garage: '',
-        yearBuilt: '',
-        houseImages:null
-      };
+        
+    const houseContext = useContext(HouseContext);
+    const { current, addHouse, removeImage, clearCurrent, updateHouse, } = houseContext;
+
+    useEffect(() => {
+    if(current !== null) {
+        setHouse(current)
+    } else {
+        setHouse({
+            realtor: '',
+            title: "",
+            description: "",
+            location: "",
+            area: '',
+            bed: '',
+            bath: '',
+            price: '',
+            propertyType: "",
+            garage: '',
+            yearBuilt: '',
+            houseImages: null
+        })
+    } 
+    }, [current])
     
-        const [house, setHouse] = useState(initialState);
-        const [images, setImages] = useState([])
-        const [imageToRemove, setImageToRemove] = useState()
-        const houseContext = useContext(HouseContext);
+    const [house, setHouse] = useState(initialState);
+    const [images, setImages] = useState([])
+    const [imageToRemove, setImageToRemove] = useState()
     
-      const {
-        Houses,
-        current,
-        filtered,
-        getHouses,
-        addHouse,
-        clearHouses,
-        deleteHouse,
-        removeImage,
-        setCurrent,
-        clearCurrent,
-        updateHouse,
-        filterHouses,
-        clearFilter,
-      } = houseContext;
-    
-      const {
+    const {
         title,
         description,
         location,
@@ -51,16 +58,16 @@ const AddForm = () => {
         propertyType,
         garage,
         yearBuilt,   
-      } = house; 
-    
+    } = house; 
+
     const onChange = (e) =>{
         setHouse({ ...house, [e.target.name] : e.target.value });
     }
 
     const handleOpenWidget = (file) => {
         const { secure_url, public_id } = file
-        setImages((prev)=>[...prev, {url : secure_url, public_id : public_id}])
-        console.log("image uploaded successfully ", images);
+        setImages((prev) => [...prev, {url : secure_url, public_id : public_id}])
+        console.log("image uploaded successfully ", secure_url);
     }
 
     // delete house image
@@ -69,16 +76,43 @@ const AddForm = () => {
         setImageToRemove(public_id)
         removeImage(public_id)
         setImageToRemove(null)
-        setImages((prev)=>prev.filter((img)=>img.public_id !== public_id));
+        setImages((prev) => prev.filter((img) => img.public_id !== public_id));
     }
     
 
     // add house
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        addHouse(house, images) 
+        if (current == null) {
+            addHouse(house, images) 
+            console.log(images)
+            
+        } else {
+            updateHouse(house)
+        }
+        clearAll()
+        setHouse({
+            realtor: '',
+            title: "",
+            description: "",
+            location: "",
+            area: '',
+            bed: '',
+            bath: '',
+            price: '',
+            propertyType: "",
+            garage: '',
+            yearBuilt: '',
+            houseImages: null
+        })
+        setImages(null)
     };
     
+    //  clear all
+    const clearAll = () => {
+        clearCurrent()
+    }
+
     return (
         <section className="add">
             <div className="add-home"> 
@@ -122,7 +156,7 @@ const AddForm = () => {
                                 <input onChange={onChange} value={bed} type="text" className="form__input" placeholder="Bed Rooms " name="bed" id="bed" required
                                 />
                                 <label htmlFor="bed" className="form__label">
-                                Bed Rooms
+                                    Bed Rooms
                                 </label>
                             </div>
                             <div className="form__input--col-1">
@@ -168,7 +202,19 @@ const AddForm = () => {
                             House description
                         </label>
 
-                        <input type="submit" value="submit" name="submit" className="btn btn--green" />
+                        <input 
+                            type="submit" 
+                            value={current ? "Update House":"Add House"} name="submit" 
+                            className="btn btn--green" 
+                        />
+                        
+                        { current && (
+                            <button 
+                                onClick={clearAll}
+                                className="btn home__btn" 
+                                > Clear 
+                            </button>
+                        )}
                     </form>
                 </div>  {/* add__form end*/}
             </div>  {/* add-home end*/}

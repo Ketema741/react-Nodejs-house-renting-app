@@ -8,31 +8,49 @@ import AuthContext from '../../context/auth/authContext'
 const Login = (props) => {
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
-    const [user, setUser] = useState({
+    const [realtor, setRealtor] = useState({
         name:'',
         email: '',
         password: '',
         password2: '',
+        location: '',
+        specializations: '',
+        activityRange: '',
+        experienceYear: '',
+        description: '',
         phone: null
       });
     
-      const {  name, email, password, password2, phone } = user;
+      const {  
+            name, 
+            email, 
+            password, 
+            password2, 
+            phone,
+            location,
+            specializations,
+            activityRange,
+            experienceYear,
+            description,
+
+        } = realtor;
       const { setAlert } = alertContext
       const { register,error, isAuthenticated } = authContext
 
       useEffect(() => {
         if(isAuthenticated){
-          props.history.push('/')
+            if(isAuthenticated){
+                props.history.push('/realtorPage')
+              }
         }
-        if(error === "User already exists"){
+        if(error === "realtor already exists"){
           setAlert(error, 'danger')
-          
         }
     
         // eslint-disable-next-line
       }, [error, isAuthenticated,  props.history])
 
-      const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+      const onChange = (e) => setRealtor({ ...realtor, [e.target.name]: e.target.value });
 
       const onSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +60,17 @@ const Login = (props) => {
         else if( password !== password2 ) {
             setAlert('password do not much', 'danger')
         } else {
-            register({ name, email, phone, password })
+            register({ 
+                name, 
+                email, 
+                phone, 
+                password,
+                location,
+                specializations,
+                activityRange,
+                experienceYear,
+                description,
+            })
            
         }
         
@@ -93,6 +121,22 @@ const Login = (props) => {
                                     className="form__label">
                                     Email
                                 </label>
+
+                                <input 
+                                    id='location'
+                                    type='location'
+                                    name='location'
+                                    value={location}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="location" 
+                                />
+                                <label 
+                                    htmlFor="location" 
+                                    className="form__label">
+                                    Location
+                                </label>
                                 <input 
                                     id='phone'
                                     type='text'
@@ -108,6 +152,71 @@ const Login = (props) => {
                                     className="form__label">
                                     Phone
                                 </label>
+
+                                <input 
+                                    id='experienceYear'
+                                    type='text'
+                                    name='experienceYear'
+                                    value={experienceYear}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="Experience year" 
+                                />
+                                <label 
+                                    htmlFor="experienceYear" 
+                                    className="form__label">
+                                    Years of experience
+                                </label>
+
+                                <input 
+                                    id='specializations'
+                                    type='text'
+                                    name='specializations'
+                                    value={specializations}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="Specializations" 
+                                />
+                                <label 
+                                    htmlFor="specializations" 
+                                    className="form__label">
+                                    Specializations
+                                </label>
+                                <input 
+                                    id='activityRange'
+                                    type='text'
+                                    name='activityRange'
+                                    value={activityRange}
+                                    onChange={onChange}
+                                    required
+                                    className = "form__input" 
+                                    placeholder = "activity range" 
+                                />
+                                <label 
+                                    htmlFor="activityRange" 
+                                    className="form__label">
+                                    Activity Range
+                                </label>
+                                <input 
+                                    id='description'
+                                    type='text'
+                                    name='description'
+                                    value={description}
+                                    onChange={onChange}
+                                    required
+                                    className="form__input" 
+                                    placeholder="description" 
+                                />
+                                <label 
+                                    htmlFor="description" 
+                                    className="form__label">
+                                    Description
+                                </label>
+
+                                
+                                
                                 <input 
                                     id="password" 
                                     type="password" 
@@ -119,7 +228,7 @@ const Login = (props) => {
                                     minLength='6'
                                 />
                                 <label 
-                                    htmlFor="name" 
+                                    htmlFor="password" 
                                     className="form__label">
                                     Password
                                 </label>
@@ -135,7 +244,7 @@ const Login = (props) => {
                                 minLength='6'
                             />
                             <label 
-                                htmlFor="name" 
+                                htmlFor="password2" 
                                 className="form__label">
                                 Confirm Password
                             </label>

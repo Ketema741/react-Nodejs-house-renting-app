@@ -1,24 +1,20 @@
 import './css/Navbar.css';
 import './css/App.css';
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import HomeForm from './components/houses/HomeForm';
+import RealtorHomes from './components/realtorHouse/RealtorHomes';
 import HomeDetail from './components/detail/HomeDetail';
 import RealtorDetail from './components/detail/RealtorDetail';
+import PrivateRoute from './components/routing/PrivateRoute'
 
-import AuthState from './context/auth/AuthState';
+import AuthState from './context/auth/AuthState'; 
 import AlertState from './context/alert/AlertState';
 import HouseState from './context/house/HouseState';
-import setAuthToken from './utils/setAuthToken';
 
-
-if(localStorage.token) {
-  setAuthToken(localStorage.token)
-}
 
 function App() { 
   return (
@@ -26,16 +22,16 @@ function App() {
     <AlertState>
     <HouseState>
       <Router>
-        <div>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/form' component={HomeForm} />
-            <Route exact path='/detail' component={HomeDetail} />
-            <Route exact path='/realtor' component={RealtorDetail} />
-          </Switch>
-        </div>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+            <Route element={<PrivateRoute />}>
+              <Route element={<RealtorHomes />} path='realtordashbord' />
+            </Route>
+            <Route path='house/:houseId' element={<HomeDetail />} />
+            <Route path='realtordetail' element={<RealtorDetail />} />
+        </Routes>
       </Router>
     </HouseState>
     </AlertState>

@@ -6,8 +6,8 @@ const ContactSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'user'
 	},
-	images: {
-		type: [String],
+	houseImages: {
+		type: [Object],
 		required: true
 	},
 	title: {
@@ -20,7 +20,7 @@ const ContactSchema = new Schema({
 	location: {
 		type: String,
 		required: true
-	},
+	}, 
 	area: {
 		type: Number,
 		required: true

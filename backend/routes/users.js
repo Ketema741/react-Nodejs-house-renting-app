@@ -54,7 +54,7 @@ router.post (
 				}
 			};
 
-			jwt.sign(
+			jwt.sign (
 				payload,
 				config.get('jwtSecret'),
 				{ expiresIn: 360000 },
@@ -71,4 +71,4 @@ router.post (
     }
 );
 
-module.exports = router;
+module.exports = router; 

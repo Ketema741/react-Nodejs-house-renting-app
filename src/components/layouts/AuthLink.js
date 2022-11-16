@@ -1,4 +1,4 @@
-import React, {Fragment, useContext, useState } from 'react'
+import React, {Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom';
 
 import { FaHeart } from 'react-icons/fa'
@@ -10,26 +10,24 @@ import AuthContext from '../../context/auth/authContext';
 const AuthLink = () => {
     const authContext = useContext(AuthContext)
 
-    const { isAuthenticated, user ,logout } = authContext
+    const { isAuthenticated, realtor, logout } = authContext
   
     const onLogout = () => {
       logout()
     };
 
-    const handler = () => {
   
-    }
   
     const authLinks = (
       <Fragment>
         <div className="user-nav__user">
-        Hi 
-        <span className="user-nav__user-name"> {user && user.name}</span>
+        Hi &nbsp;
+        <span className="user-nav__user-name"> {realtor &&  realtor.name.split(" ")[0]}&nbsp;</span>
           <img 
             src="img/realtor-1.jpeg" 
             alt="realtor" 
             className="user-nav__user-photo" 
-          />
+          /> 
         </div>
   
         <div className='nav__link'>
@@ -57,14 +55,14 @@ const AuthLink = () => {
             <div className="user-nav__icon-box">
                 <FaHeart />
                 <span className="user-nav__notification">
-                  {user && user.favourites.length}
+                  0 
                 </span>
             </div>
             
             <div className="user-nav__icon-box">
                 <ImNotification />
                 <span className="user-nav__notification">
-                  {user && user.message.length}
+                  0 
                 </span>
             </div>
 

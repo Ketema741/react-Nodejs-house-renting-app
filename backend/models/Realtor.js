@@ -14,39 +14,38 @@ const UserSchema = mongoose.Schema ({
         type:String,
         required:true
     },
-    phone: {
+    phone: { 
         type:String,
         required:true
     },
     description: {
         type:String,
-        required:true
     },
     experienceYear: {
         type:Number,
-        required:true
+        required: true
     },
     location: {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
-    Specializations: {
+    specializations: {
         type:String,
-        required:true
+        required: true
     },
     activityRange: {
-        type:Number,
+        type: Number, 
         default:null
     },
     forSale: {
-        type:Number,
+        type: Number,
         default:null
     },
     sold: {
-        type:Number,
+        type: Number,
         default:null
     },
-    date:{
+    date: {
         type:Date,
        default:Date.now
     },

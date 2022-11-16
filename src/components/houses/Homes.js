@@ -1,58 +1,41 @@
-import React, { useState, Fragment } from 'react'
+import React, { useContext, useEffect, Fragment } from 'react'
+
 import HomeItem from './HomeItem'
+import Spinner from '../layouts/Spinner'
+
+import HouseContext from '../../context/house/houseContext'
+
 
 const Homes = () => {
-    const initialState = {
-        homes: [
-            {
-                id:1,
-                image:'img/house-1.jpeg',
-                title:'cuzzy country house',
-                location:'addis',
-                rooms:23,
-                area:234,
-                price:10023
-            },
-            {
-                id:2,
-                image:'img/house-2.jpeg',
-                title:'cuzzy country house',
-                location:'addis',
-                rooms:23,
-                area:234,
-                price:10023
-            },
-            {
-                id:3,
-                image:'img/house-3.jpeg',
-                title:'modern vila',
-                location:'Gonder',
-                rooms:23,
-                area:234,
-                price:10023
-            },
-            {
-                id:4,
-                image:'img/house-4.jpeg',
-                title:'modern vila',
-                location:'Adama',
-                rooms:23,
-                area:234,
-                price:10023
-            },
-        ]
-    }
-    const [state, setState] =useState(initialState)
-    const { homes } = state
-
-  return (
-    <div className="homes" id="homes">
-        <h1 className='heading-1 description'>Newest Listings</h1>
-        {homes.map(home =>{ 
-            return <HomeItem home={home} key={home.id} />
-        })}
-    </div>
-  )
+    const houseContext = useContext(HouseContext)
+    const { publichouses, getPublicHouses, filtered, loading } =  houseContext
+    useEffect(() => {
+        getPublicHouses()
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    return (
+        <div className="homes" id="homes">
+            {publichouses != null && !loading ? (
+                <Fragment>
+                    {   
+                        filtered !== null ? 
+                        filtered.map( home => ( 
+                        <HomeItem home={home} key={home._id} />
+                        )) 
+                        :
+                        <Fragment>
+                            <h1 className='heading-1 description'>Newest Listings</h1>
+                            {publichouses.map( home => ( 
+                                <HomeItem home={home} key={home._id} />
+                            ))}
+                        </Fragment>
+                    }
+                </Fragment>
+                ) : <Spinner />
+            } 
+        </div>
+    )
 }
 
 export default Homes

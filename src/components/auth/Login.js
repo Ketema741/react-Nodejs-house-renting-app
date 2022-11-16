@@ -10,28 +10,28 @@ const Login = (props) => {
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
 
-    const [user, setUser] = useState({
+    const [realtor, setRealtor] = useState({
       email: '',
       password: '',
     });
   
-    const { email, password } = user;
+    const { email, password } = realtor;
     const { setAlert } = alertContext
     const { login, error, isAuthenticated } = authContext
   
     
     useEffect(() => {
       if(isAuthenticated){
-        props.history.push('/')
+        props.history.push('/realtordashbord')
       }
-      if(error === "Invalid Credentials"){
+      if(error === "Invalid Credentials") {
         setAlert(error, 'danger')
       }
   
       // eslint-disable-next-line
     }, [error, isAuthenticated,  props.history])
     
-      const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+      const onChange = (e) => setRealtor({ ...realtor, [e.target.name]: e.target.value });
 
       const onSubmit = (e) => {
         e.preventDefault();

@@ -4,8 +4,8 @@
     font-size: 1.4rem;
     height: 7rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-end;
 }
 
 
@@ -60,7 +60,7 @@
 .user-nav {
     align-self: stretch;
     display: flex;
-    align-items: center
+    align-items: center;
 }
 
 .user-nav>* {

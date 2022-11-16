@@ -19,11 +19,11 @@ router.post(
         check("phone", "please add phone and phone can not be greater than 10 diigit")
             .not()
             .isEmpty()
-            .isLength({max:10}),
+            .isLength({min:10}),
         check("description", "please add description").not().isEmpty(),
         check("experienceYear", "please add experience Year").not().isEmpty(),
         check("location", "please add location").not().isEmpty(),
-        check("Specializations", "please add Specializations").not().isEmpty(),
+        check("specializations", "please add Specializations").not().isEmpty(),
         
     ],
     async (req, res) => { 
@@ -40,12 +40,12 @@ router.post(
                 description,
                 experienceYear,
                 location,
-                Specializations,
+                specializations,
                 activityRange,
             } = req.body;
 
 		try {
-			let realtor = await Realtor.findOne({ email:email });
+			let realtor = await Realtor.findOne({ email: email });
 
 			if (realtor) {
 				return res.status(400).json({ msg: 'realtor already exists' });
@@ -59,7 +59,7 @@ router.post(
                 description,
                 experienceYear,
                 location,
-                Specializations,
+                specializations,
                 activityRange,
 			});
 

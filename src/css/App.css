@@ -33,7 +33,7 @@
   grid-row: 1 / 2;
   z-index: 2;
   transform: translateY(10%);
-  margin: 0 3rem;
+  /* margin: 0 3rem; */
 }
 
 @media only screen and (max-width: 50em) {
@@ -61,7 +61,6 @@
   position: absolute;
   font-weight:bold;
   color:var(--color-grey-dark-1);
-
 }
 
 

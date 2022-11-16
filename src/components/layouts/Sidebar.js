@@ -9,7 +9,7 @@ const Sidebar = () => {
         <nav className="sdbar">
             <ul className="sd-nav">
                 <li className="sd-nav__item sd-nav__item--active">
-                    <a href="home" className="sd-nav__link">
+                    <a href="/" className="sd-nav__link">
                         <AiOutlineHome className="sd-nav__icon" />
                         <span>HOME</span>
                     </a>
@@ -23,15 +23,20 @@ const Sidebar = () => {
                 </li>
 
                 <li className="sd-nav__item">
-                    <a href="about" className="sd-nav__link">
+                    <a href="/buy" className="sd-nav__link">
                         <BsCreditCard2Back className="sd-nav__icon" />
                         <span>Buy</span>
                     </a>
                 </li>
                 <li className="sd-nav__item">
-                    <a href="/login" className="sd-nav__link">
+                    <a href="/sell" className="sd-nav__link">
                         <MdOutlineSell className="sd-nav__icon" />
                         <span>Sell </span>
+                    </a>
+                </li>
+                <li className="sd-nav__item">
+                    <a href="/realtordetail" className="sd-nav__link">
+                        <span>Realtor </span>
                     </a>
                 </li>
             </ul>

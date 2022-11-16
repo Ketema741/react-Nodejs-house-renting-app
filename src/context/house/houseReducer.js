@@ -1,5 +1,7 @@
 import {
   GET_HOUSES,
+  GET_PUBLICHOUSES,
+  GET_HOUSE,
   ADD_HOUSE,
   DELETE_HOUSE,
   SET_CURRENT,
@@ -18,6 +20,16 @@ import {
           ...state,
           houses: action.payload
         };
+        case GET_PUBLICHOUSES:
+          return {
+            ...state,
+            publichouses: action.payload
+          };
+        case GET_HOUSE:
+          return {
+            ...state,
+            house: action.payload
+          };
       case ADD_HOUSE:
         return {
           ...state,
@@ -58,8 +70,8 @@ import {
       case FILTER_HOUSES:
         return {
           ...state,
-          filtered: state.houses.filter(({ name, email }) => {
-            const testString = `${name}${email}`.toLowerCase();
+          filtered: state.publichouses.filter(({ title, location }) => {
+            const testString = `${title}${location}`.toLowerCase();
             return testString.includes(action.payload.toLowerCase());
           })
         };

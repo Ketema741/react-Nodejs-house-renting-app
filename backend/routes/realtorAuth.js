@@ -7,21 +7,20 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const Realtor = require('../models/Realtor');
-const User = require('../models/User');
 
 // @route    GET api/auth
 // @desc     Get logged realtor
 // @access   Private
 router.get('/', realtorAuth, async (req, res) => {
 	try {
-		const realtor = await Realtor.findById(req.requester.id).select('-password');
+		const realtor = await Realtor.findById(req.realtor.id).select('-password');
 		res.json(realtor);
 
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send('Server Error');
 	}
-});
+}); 
 
 
 // @route     POST api/auth
@@ -74,7 +73,7 @@ router.post(
 		console.error(err.message);
 		res.status(500).send('Server Error');
 	  }
-	}
+	}   
 );
 
 module.exports = router;

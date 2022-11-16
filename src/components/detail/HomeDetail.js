@@ -1,16 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
+import { Link, useParams } from 'react-router-dom'
 
 import AuthLink from '../layouts/AuthLink';
 import Sidebar from '../layouts/Sidebar';
 import Footer from '../layouts/Footer';
+import Spinner from '../layouts/Spinner'
+
+import HouseContext from '../../context/house/houseContext'
 
 import "../../css/HomeDetail.css";
 
+const HomeDetail = () => {
+    const { houseId } = useParams()
+    console.log(houseId)
+    const houseContext = useContext(HouseContext)
+    const { house, getHouse } =  houseContext
 
-const HomeDetail = ()=>{
-    return(
+    
+    return ( 
         <div className="detail__container">
-
             <Fragment>
                 <AuthLink />
                 <Sidebar />
@@ -20,8 +28,8 @@ const HomeDetail = ()=>{
             </Fragment>
 
             <div className="realtor__pictures">
-                <img src="img/realtor-3.jpeg" alt="Couple with new house" className="realtor__img--2" style={{height:"350px"}} />
-                <img src="img/realtor-2.jpeg" alt="New house" className="realtor__img--1" />
+                <img src="/img/realtor-3.jpeg" alt="Couple with new house" className="realtor__img--2" style={{height:"350px"}} />
+                <img src="/img/story-2.jpeg" alt="New house" className="realtor__img--1" />
             </div>
 
             <div className="realtor__content">
@@ -34,68 +42,47 @@ const HomeDetail = ()=>{
                     <a type="email" title ="email me" href='mailto:kgirma363gmail.com' className="btn">Email me</a>
                 </address>
             </div>
-           
-            <section className="detail__homes" id="home">
-                <div className="home">
-                    <img src="img/gal-1.jpeg" alt="house_image" className="home__img" />
-                    <svg className="home__like">
-                    </svg> 
-                    <h5 className="home__name">cozzy country house</h5>
-                    <div className="home__location">
-                        <svg>
-                        </svg>
-                        <p>Adama</p>
-                    </div>
-                    <div className="home__rooms">
-                        <svg>
-                        </svg>
-                        <p>23 rooms</p>
-                    </div>
-                    <div className="home__area">
-                        <svg>
-                        </svg>
-                        <p>231 m<sup>2</sup></p>
-                    </div>
-                    <div className="home__price">
-                        <svg>
-                        </svg>
-                        <p>234ETB</p>
-                    </div>
-                    <a className="btn home__btn" href="home.php" style={{textDecoration: "none"}}>Back</a>
-                </div>
+            {house != null ? (
+                <Fragment>
+                    <section className="detail__homes" id="home">
+                        <div className="home">
+                            <img src={house.houseImages[0].url} alt="house_image" className="home__img" />
+                            <svg className="home__like">
+                            </svg> 
+                            <h5 className="home__name">{house.title}</h5>
+                            <div className="home__location">
+                                <svg>
+                                </svg>
+                                <p>{house.location}</p>
+                            </div>
+                            <div className="home__rooms">
+                                <svg>
+                                </svg>
+                                <p>{house.bed} rooms</p>
+                            </div>
+                            <div className="home__area">
+                                <svg>
+                                </svg>
+                                <p>{house.area} m<sup>2</sup></p>
+                            </div>
+                            <div className="home__price">
+                                <svg>
+                                </svg>
+                                <p>{house.price} ETB</p>
+                            </div>
+                            <Link className="btn home__btn" to="/" style={{textDecoration: "none"}}>Back</Link>
+                        </div>
 
-                <div className="home">
-                    <img src="img/gal-1.jpeg" alt="house_image" className="home__img" />
-                    <svg className="home__like">
-                    </svg> 
-                    <h5 className="home__name">cozzy country house</h5>
-                    <div className="home__location">
-                        <svg>
-                        </svg>
-                        <p>Adama</p>
-                    </div>
-                    <div className="home__rooms">
-                        <svg>
-                        </svg>
-                        <p>23 rooms</p>
-                    </div>
-                    <div className="home__area">
-                        <svg>
-                        </svg>
-                        <p>231 m<sup>2</sup></p>
-                    </div>
-                    <div className="home__price">
-                        <svg>
-                        </svg>
-                        <p>234ETB</p>
-                    </div>
-                    <a className="btn home__btn" href="home.php" style={{textDecoration: "none"}}>Back</a>
-                </div>
-            </section>
+                    </section>
 
-            <section className="gallery">
-               
-            </section>
+                    <section className="gallery">
+                    
+                    </section>
+                </Fragment>
+
+            ) : <Spinner />
+        }
+            
             <footer className="detail__footer">
                <Footer />
             </footer>
