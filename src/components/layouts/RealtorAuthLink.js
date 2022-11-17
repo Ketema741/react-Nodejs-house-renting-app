@@ -45,21 +45,15 @@ const AuthLink = () => {
     return (
       <div className="header__nav">
         <nav className="user-nav">
-            <div className="user-nav__icon-box">
-                <FaHeart />
-                <span className="user-nav__notification">
-                  0 
-                </span>
-            </div>
             
-            <div className="user-nav__icon-box">
-                <ImNotification />
-                <span className="user-nav__notification">
-                  0 
-                </span>
-            </div>
+          <div className="user-nav__icon-box">
+              <ImNotification />
+              <span className="user-nav__notification">
+                0 
+              </span>
+          </div>
 
-            {isRealtorAuthenticated? authLinks : guestLinks}
+          {isRealtorAuthenticated? authLinks : guestLinks}
         </nav>
       </div>
    )

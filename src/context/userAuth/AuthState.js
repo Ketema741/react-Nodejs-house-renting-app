@@ -112,7 +112,7 @@ const AuthState = (props) => {
 
     // AuthState Provider Component
     return (
-      <AuthContext.Provider value={{
+      <AuthContext.Provider value = {{
         user: state.user,
         error: state.error,
         isUserAuthenticated: state.isUserAuthenticated,

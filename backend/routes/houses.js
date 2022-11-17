@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const realtorAuth = require("../middleware/realtorAuth");
 const { check, validationResult } = require("express-validator");
-const cloudinary = require("cloudinary");
 const config = require("config");
 
+const realtorAuth = require("../middleware/realtorAuth");
+
+const cloudinary = require("cloudinary");
 const House = require("../models/House");
+
 // @route     GET api/Houses
 // @desc      Get all Houses
 // @access    Public
@@ -53,7 +55,7 @@ router.get("/:id", async (req, res) => {
 // @route     POST api/houses
 // @desc      Add new houses
 // @access    Private
-router.post(
+router.post( 
   "/",
   realtorAuth,
   check("title", "title is required").not().isEmpty(),
@@ -172,7 +174,7 @@ router.delete("/:id", realtorAuth, async (req, res) => {
 
     await House.findByIdAndRemove(req.params.id);
 
-    res.json({ msg: "Contact removed" });
+    res.json({ msg: "Realtor removed" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

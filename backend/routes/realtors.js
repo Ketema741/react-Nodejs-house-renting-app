@@ -1,10 +1,45 @@
 const express = require('express')
 const router = express.Router()
-const Realtor = require('../models/Realtor')
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator')
+
+const realtorAuth = require("../middleware/realtorAuth");
+
+const Realtor = require('../models/Realtor')
+
+
+// @route     GET api/realtors
+// @desc      Get all Realtors
+// @access    Public
+router.get("/", async (req, res) => {
+    try {
+      const realtors = await Realtor.find().sort({
+        date: -1, 
+      });
+      res.json(realtors);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+});
+
+
+// @route    GET api/realtors
+// @desc     Get single realtor
+// @access   Public
+router.get("/:id", async (req, res) => {
+    try { 
+      let realtor = await Realtor.findById(req.params.id);
+      if (!realtor) return res.status(404).json({ msg: req.params.id });
+      res.json(realtor);
+    } catch (err) { 
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    } 
+});
+
 
 // @route       POST api/realtors
 // @desc        register a realtor
@@ -91,5 +126,70 @@ router.post(
 		}
     }
 );
+
+    // @route     PUT api/house/:id
+    // @desc      Update house
+    // @access    Private
+    router.put("/:id", realtorAuth, async (req, res) => {
+        const {
+            name, 
+            email, 
+            password, 
+            phone,
+            description,
+            experienceYear,
+            location,
+            specializations,
+            activityRange,
+        } = req.body;
+    
+        // Build realtor object
+        const realtorFields = {};
+        if (name) realtorFields.name = name;
+        if (email) realtorFields.email = email;
+        if (password) realtorFields.password = password;
+        if (phone) realtorFields.phone = phone;
+        if (description) realtorFields.description = description;
+        if (experienceYear) realtorFields.experienceYear = experienceYear;
+        if (location) realtorFields.location = location;
+        if (specializations) realtorFields.specializations = specializations;
+        if (activityRange) realtorFields.activityRange = activityRange;
+    
+        try {
+        let realtor = await Realtor.findById(req.params.id);
+    
+        if (!realtor) return res.status(404).json({ msg: "realtor not found" });
+    
+        realtor = await Realtor.findByIdAndUpdate(
+            req.params.id,
+            { $set: realtorFields },
+            { new: true }
+        );
+    
+        res.json(realtor);
+        } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+        }
+    });
+  
+  // @route     DELETE api/realtors/:id
+  // @desc      Delete realtor
+  // @access    Private
+  router.delete("/:id", realtorAuth, async (req, res) => {
+    try {
+      const realtor = await Realtor.findById(req.params.id);
+  
+      if (!realtor) return res.status(404).json({ msg: "realtor not found" });
+  
+      await Realtor.findByIdAndRemove(req.params.id);
+  
+      res.json({ msg: "Realtor removed" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
+
 
 module.exports = router;
