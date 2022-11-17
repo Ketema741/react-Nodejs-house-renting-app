@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 import Alert from '../layouts/Alerts'
 
@@ -11,27 +13,30 @@ import '../../css/login.css'
 const Login = (props) => {
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         name:'',
         email: '',
         password: '',
         password2: '',
+        phone: '',
       });
     
       const {  
             name, 
             email, 
             password, 
-            password2, 
+            password2,
+            phone, 
         } = user;
       const { setAlert } = alertContext
       const { userRegister, error, isUserAuthenticated } = authContext
 
       useEffect(() => {
         if(isUserAuthenticated){
-            props.history.push('/')
+            navigate('/')
         }
-        if(error === "realtor already exists"){
+        if(error === "user already exists"){
           setAlert(error, 'danger')
         }
     
@@ -52,10 +57,9 @@ const Login = (props) => {
                 name, 
                 email, 
                 password,
+                phone
             })
-           
         }
-        
       };
     
   
@@ -103,6 +107,20 @@ const Login = (props) => {
                                     className="form__label">
                                     Email
                                 </label>
+                                <input 
+                                id="phone" 
+                                type="text" 
+                                name='phone'
+                                placeholder="phone " 
+                                className="form__input" 
+                                onChange={onChange} 
+                                required
+                            />
+                            <label 
+                                htmlFor="phone" 
+                                className="form__label">
+                                phone
+                            </label>
 
                                 <input 
                                     id="password" 
@@ -135,12 +153,14 @@ const Login = (props) => {
                                 className="form__label">
                                 Confirm Password
                             </label>
-                                <input 
-                                    type="submit"  
-                                    value="Signup" 
-                                    name="submit" 
-                                    className="btn btn--green" 
-                                />
+                               
+                            
+                            <input 
+                                type="submit"  
+                                value="Signup" 
+                                name="submit" 
+                                className="btn btn--green" 
+                            />
                             </form>
                         </div>
                     </div>

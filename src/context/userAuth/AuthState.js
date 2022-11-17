@@ -100,7 +100,7 @@ const AuthState = (props) => {
   
 
   // load realtor on first run or refresh
-  if (state.loading) {
+  if (state.userLoading) {
     loadUser();
   }
 
