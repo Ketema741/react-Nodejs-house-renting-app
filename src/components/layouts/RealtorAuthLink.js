@@ -1,7 +1,6 @@
-import React, {Fragment, useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom';
 
-import { FaHeart } from 'react-icons/fa'
 import { ImNotification } from 'react-icons/im'
 
 import AuthContext from '../../context/realtorAuth/authContext';
@@ -15,8 +14,6 @@ const AuthLink = () => {
     const onLogout = () => {
       logout()
     };
-
-  
   
     const authLinks = (
       <Fragment>
@@ -30,8 +27,8 @@ const AuthLink = () => {
           /> 
         </div>
   
-        <Link className='nav__link' to='/realtorlogin' onClick={onLogout}>
-        <span className='hide-sm'>Logout</span>
+        <Link className='nav__link' to='/realtors' onClick={onLogout}>
+          <span className='hide-sm'>Logout</span>
         </Link>
       </Fragment>
     );

@@ -17,6 +17,7 @@ const initialState = {
 		controler: false
 	}
 const HomeItem = (props) => {
+	
 	const { home } = props
 	const [state, setState] =useState(initialState)
 	const {likes, favourites, message, controler } = state

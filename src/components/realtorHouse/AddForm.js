@@ -21,7 +21,7 @@ const AddForm = () => {
         
     const houseContext = useContext(HouseContext);
     const { current, addHouse, removeImage, clearCurrent, updateHouse, } = houseContext;
-
+ 
     useEffect(() => {
     if(current !== null) {
         setHouse(current)
@@ -85,8 +85,6 @@ const AddForm = () => {
         e.preventDefault();
         if (current == null) {
             addHouse(house, images) 
-            console.log(images)
-            
         } else {
             updateHouse(house)
         }
@@ -105,6 +103,7 @@ const AddForm = () => {
             yearBuilt: '',
             houseImages: null
         })
+
         setImages(null)
     };
     
@@ -126,7 +125,7 @@ const AddForm = () => {
                                         <img src={image.url} alt='house preview' className='choosen__img' />
                                         {imageToRemove !== image.public_id && 
                                             <i className="fa fa-times-circle close-icon delete" onClick={()=>handleDelete(image)}> </i>
-                                        }                                        
+                                        }       
                                     </div>
                                 ))} 
                             </div>

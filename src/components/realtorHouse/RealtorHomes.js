@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, Fragment } from "react";
-import HouseContext from "../../context/house/houseContext";
+
 import RealtorHomeItem from './RealtorHomeItem'
 import setAuthToken from '../../utils/setAuthToken';
 import Spinner from '../layouts/Spinner'
+import AddForm from './AddForm';
+
+import HouseContext from "../../context/house/houseContext";
 
 import "../../css/HouseForm.css";
-import AddForm from './AddForm';
 
 
 

@@ -31,7 +31,7 @@ const AuthLink = () => {
         </div>
   
         <Link className='nav__link' to='/' onClick={onLogout}>
-        <span className='hide-sm'>Logout</span>
+          <span className='hide-sm'>Logout</span>
         </Link>
       </Fragment>
     );

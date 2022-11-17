@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import axios from 'axios'
 import setAuthToken from '../../utils/setAuthToken'
 
@@ -12,7 +12,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS
 } from '../types';
 
 const AuthState = (props) => {

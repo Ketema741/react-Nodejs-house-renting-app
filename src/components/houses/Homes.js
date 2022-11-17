@@ -7,13 +7,16 @@ import HouseContext from '../../context/house/houseContext'
 
 
 const Homes = () => {
+    
     const houseContext = useContext(HouseContext)
     const { publichouses, getPublicHouses, filtered, loading } =  houseContext
+
     useEffect(() => {
         getPublicHouses()
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     return (
         <div className="homes" id="homes">
             {publichouses != null && !loading ? (

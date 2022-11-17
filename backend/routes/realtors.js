@@ -6,8 +6,9 @@ const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator')
 
 const realtorAuth = require("../middleware/realtorAuth");
-
 const Realtor = require('../models/Realtor')
+const cloudinary = require("cloudinary");
+
 
 
 // @route     GET api/realtors
@@ -67,17 +68,18 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		} 
 
-        const { 
-                name, 
-                email, 
-                password, 
-                phone,
-                description,
-                experienceYear,
-                location,
-                specializations,
-                activityRange,
-            } = req.body;
+      const { 
+        name, 
+        email, 
+        password, 
+        phone,
+        description,
+        experienceYear,
+        location,
+        specializations,
+        activityRange,
+        realtorImage,
+      } = req.body;
 
 		try {
 			let realtor = await Realtor.findOne({ email: email });
@@ -91,11 +93,12 @@ router.post(
 				email,
 				password,
 				phone,
-                description,
-                experienceYear,
-                location,
-                specializations,
-                activityRange,
+        description,
+        experienceYear,
+        location,
+        specializations,
+        activityRange,
+        realtorImage
 			});
 
 			const salt = await bcrypt.genSalt(10);
@@ -181,13 +184,31 @@ router.post(
       const realtor = await Realtor.findById(req.params.id);
   
       if (!realtor) return res.status(404).json({ msg: "realtor not found" });
-  
       await Realtor.findByIdAndRemove(req.params.id);
   
       res.json({ msg: "Realtor removed" });
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
+    }
+  });
+  
+
+  cloudinary.config({
+    cloud_name: config.get("cloud_name"),
+    api_key: config.get("api_key"),
+    api_secret: config.get("api_secret"),
+  });
+  
+  
+  router.post("/image", async (req, res) => {
+    const { public_id } = req.body;
+    try {
+      await cloudinary.uploader.destroy(public_id);
+      res.json({ msg: "Image removed" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(400).send("server Error");
     }
   });
 

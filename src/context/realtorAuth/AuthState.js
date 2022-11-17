@@ -29,7 +29,9 @@ const AuthState = (props) => {
     
     
     // Register realtor
-    const realtorRegister = async (formData) => {
+    const realtorRegister = async (formData, images) => {
+      formData.realtorImage = images
+
       const config = {
         headers: {
           "Content-Type": 'application/json'
@@ -49,21 +51,20 @@ const AuthState = (props) => {
       }
     }
 
-
-    // login realtor
-    const realtorLogin = async (formData) => {
-      const config = {
-        headers: {
-          "Content-Type": 'application/json'
-        }
+    const removeImage = async (public_id) => {
+      const id_obj = {
+        public_id : public_id
       }
-      try {
-        const res = await axios.post ('api/authRealtor', formData, config)
-        dispatch ({
-          type: LOGIN_SUCCESS,
-          payload: res.data
-        })
-        loadRealtor();
+       
+      const config = {
+        headers : { 
+          "Content-Type": "application/json"
+        }
+      } 
+      try { 
+        const res = await axios.post(`api/realtors/image`, id_obj, config)
+        console.log(res)
+
       } catch(err) {
         dispatch ({
           type: LOGIN_FAIL,
@@ -73,8 +74,38 @@ const AuthState = (props) => {
       }
     }
 
+
+    // login realtor
+    const realtorLogin = async (formData) => {
+      const config = {
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      }
+
+      try {
+        const res = await axios.post ('api/authRealtor', formData, config)
+        
+        dispatch ({
+          type: LOGIN_SUCCESS,
+          payload: res.data
+        })
+
+        loadRealtor();
+      } catch(err) {
+
+        dispatch ({
+          type: LOGIN_FAIL,
+          payload: err.response.data.msg
+        })
+
+        console.log('error ', err.response)
+      }
+    }
+
     // logout 
     const logout = () => dispatch({ type: LOGOUT })
+    
 
     // load realtor
     const loadRealtor = async () => {
@@ -98,7 +129,7 @@ const AuthState = (props) => {
     // clear error
    
     // set token on initial app loading
-    setAuthToken(state.realtorToken, 'realtortoken');
+    // setAuthToken(state.realtorToken, 'realtortoken');
    
 
     // load realtor on first run or refresh
@@ -122,6 +153,7 @@ const AuthState = (props) => {
         realtorLogin,
         logout,
         loadRealtor,
+        removeImage,
       }}>
 
         {props.children}

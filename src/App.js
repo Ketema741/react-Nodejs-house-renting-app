@@ -17,6 +17,7 @@ import RealtorAuthState from './context/realtorAuth/AuthState';
 import UserAuthState from './context/userAuth/AuthState'; 
 import AlertState from './context/alert/AlertState';
 import HouseState from './context/house/HouseState';
+import RealtorState from './context/realtor/RealtorState';
 
 
 function App() { 
@@ -25,6 +26,7 @@ function App() {
     <UserAuthState>
     <AlertState>
     <HouseState>
+    <RealtorState>
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -39,6 +41,7 @@ function App() {
           <Route path='realtors' element={<Realtors />} />
         </Routes>
       </Router>
+    </RealtorState>
     </HouseState>
     </AlertState>
     </UserAuthState>

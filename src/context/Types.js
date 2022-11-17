@@ -20,3 +20,13 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+
+export const GET_REALTORS = 'GET_REALTORS';
+export const GET_REALTOR = 'GET_REALTOR';
+export const ADD_REALTOR = 'ADD_REALTOR';
+export const DELETE_REALTOR = 'DELETE_REALTOR';
+export const UPDATE_REALTOR = 'UPDATE_REALTOR';
+export const FILTER_REALTORS = 'FILTER_REALTORS';
+export const CLEAR_REALTORS = 'CLEAR_REALTORS';
+export const REALTOR_ERROR = 'REALTOR_ERROR';

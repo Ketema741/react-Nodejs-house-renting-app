@@ -64,7 +64,7 @@ const Login = (props) => {
     
   
     return (
-        <div className="login-container" style={style}>
+        <div className="login-container" >
             <header className="login-header">
                 <h3 className="heading-3">Your own home:</h3>
                 <h1 className="heading-1">The ultimate personal freedom</h1>
@@ -169,7 +169,5 @@ const Login = (props) => {
         </div>
     )
 }
-const style = {
-  
-}
+
 export default Login

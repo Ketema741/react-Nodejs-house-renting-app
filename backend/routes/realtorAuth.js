@@ -8,6 +8,8 @@ const { check, validationResult } = require('express-validator');
 
 const Realtor = require('../models/Realtor');
 
+
+
 // @route    GET api/auth
 // @desc     Get logged realtor
 // @access   Private
@@ -75,5 +77,8 @@ router.post(
 	  }
 	}   
 );
+
+
+
 
 module.exports = router;

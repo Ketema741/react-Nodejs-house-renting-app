@@ -19,7 +19,7 @@ const UserSchema = mongoose.Schema ({
         required:true
     },
     description: {
-        type:String,
+        type: String,
     },
     experienceYear: {
         type:Number,
@@ -35,19 +35,22 @@ const UserSchema = mongoose.Schema ({
     },
     activityRange: {
         type: Number, 
-        default:null
+        default: null
     },
     forSale: {
         type: Number,
-        default:null
+        default: null
     },
     sold: {
         type: Number,
-        default:null
+        default: null
     },
+    realtorImage: {
+		type: [Object],
+	},
     date: {
-        type:Date,
-       default:Date.now
+        type: Date,
+       default: Date.now
     },
 })
 

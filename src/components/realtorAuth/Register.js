@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+import CloudinaryUploadWidget from "../cloudinary/CloudinaryUploadWidget";
 import Alert from '../layouts/Alerts'
 
 import AlertContext from '../../context/alert/alertContext';
@@ -8,24 +9,30 @@ import AuthContext from '../../context/realtorAuth/authContext'
 
 import '../../css/login.css'
 
-const Login = () => {
+
+const Register = (props) => {
     
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
     const navigate = useNavigate()
     
-    const [realtor, setRealtor] = useState({
-        name:'',
-        email: '',
-        password: '',
-        password2: '',
-        location: '',
-        specializations: '',
-        activityRange: '',
-        experienceYear: '',
-        description: '',
-        phone: null
-    });
+    const [realtor, setRealtor] = useState(
+        {
+            name:'',
+            email: '',
+            password: '',
+            password2: '',
+            location: '',
+            realtorImage: null,
+            specializations: '',
+            activityRange: '',
+            experienceYear: '',
+            description: '',
+            phone: null
+        }
+    );
+    const [images, setImages] = useState([])
+    const [imageToRemove, setImageToRemove] = useState()
     
     const {  
         name, 
@@ -41,43 +48,47 @@ const Login = () => {
     } = realtor;
 
     const { setAlert } = alertContext
-    const { realtorRegister, error, isRealtorAuthenticated } = authContext
+    const { removeImage, realtorRegister, error, isRealtorAuthenticated } = authContext
 
     useEffect(() => {
-    if(isRealtorAuthenticated) {
         if(isRealtorAuthenticated) {
             navigate('/realtordashboard')
         }
-    }
-    if(error === "realtor already exists") {
-        setAlert(error, 'danger')
-    }
+
+        if(error === "realtor already exists") {
+            setAlert(error, 'danger')
+        }
 
     // eslint-disable-next-line
     }, [error, isRealtorAuthenticated,  props.history])
 
     const onChange = (e) => setRealtor({ ...realtor, [e.target.name]: e.target.value });
 
+    const handleOpenWidget = (file) => {
+        const { secure_url, public_id } = file
+        setImages((prev) => [...prev, {url : secure_url, public_id : public_id}])
+        console.log("image uploaded successfully ", secure_url);
+    }
+
+    // delete house image
+    const handleDelete = (imgObj) => {
+        const public_id = imgObj.public_id
+        setImageToRemove(public_id)
+        removeImage(public_id)
+        setImageToRemove(null)
+        setImages((prev) => prev.filter((img) => img.public_id !== public_id));
+    }
+
     const onSubmit = (e) => {
-    e.preventDefault();
-    if(name === '' || email === '' || password === '' || phone === ''){
-        setAlert('Please fill all field', 'danger')
-    }
-    else if( password !== password2 ) {
-        setAlert('password do not much', 'danger')
-    } else {
-        realtorRegister({ 
-            name, 
-            email, 
-            phone, 
-            password,
-            location,
-            specializations,
-            activityRange,
-            experienceYear,
-            description,
-        })
-    }
+        e.preventDefault();
+        if(name === '' || email === '' || password === '' || phone === ''){
+            setAlert('Please fill all field', 'danger')
+        }
+        else if( password !== password2 ) {
+            setAlert('password do not much', 'danger')
+        } else {
+            realtorRegister(realtor, images)
+        }
     };
     
 
@@ -94,6 +105,17 @@ const Login = () => {
                         <div className="login__form">
                             <Alert />
                             <form  className="form" onSubmit={onSubmit}>
+                                <CloudinaryUploadWidget handleOpenWidget={handleOpenWidget} />
+                                    <div className='img__preview-container'>
+                                        {images !== null && images.map((image)=>(
+                                            <div className="image__preview">
+                                                <img src={image.url} alt='house preview' className='choosen__img' />
+                                                {imageToRemove !== image.public_id && 
+                                                    <i className="fa fa-times-circle close-icon delete" onClick={()=>handleDelete(image)}> </i>
+                                                }      
+                                            </div>
+                                        ))} 
+                                    </div>
                                 <input 
                                     id='name'
                                     type='text'
@@ -269,4 +291,4 @@ const Login = () => {
 const style = {
   
 }
-export default Login
+export default Register
