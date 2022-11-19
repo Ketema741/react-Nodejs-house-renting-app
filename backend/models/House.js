@@ -10,7 +10,7 @@ const ContactSchema = new Schema({
 		type: [Object],
 		required: true
 	},
-	title: {
+	title: { 
 		type: String,
 		required: true
 	},
@@ -48,7 +48,7 @@ const ContactSchema = new Schema({
 		required: true
 	},
 	Neighborhood: {
-		type: [String],
+		type: String,
 	},
 	date: {
 		type: Date,

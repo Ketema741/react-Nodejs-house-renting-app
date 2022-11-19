@@ -8,36 +8,13 @@ import "../../css/Realtor.css";
 
 
 import RealtorItem from './RealtorItem'
+import RealtorFilter from './RealtorFilter'
 import Spinner from '../layouts/Spinner'
 
 import RealtorContext from '../../context/realtor/realtorContext'
 
 
-const RealtorHeader = () => {
-    return (
-        <Fragment>
-            <AuthLink />
-            <Sidebar />
-            
-            <div className="realtor__header">
-                <h1 className="heading-1">
-                    The ultimate personal freedom
-                </h1>
-                <form className="search">
-                    <input 
-                        type="text" 
-                        className="search__input" 
-                        placeholder="Search realtors" 
-                    />
-                </form>
-            </div>
-        </Fragment>
-    )
-}
-
-
 const Realtors = () => {
-
     const realtorContext = useContext(RealtorContext)
     const { realtors, getRealtors, filtered } =  realtorContext
 
@@ -50,7 +27,49 @@ const Realtors = () => {
     return(
         <div className="realtor__container">
             <RealtorHeader />
-            <div className="top__realtors">
+            <TopThreeRealtors />
+
+            <section className="realtors" id="realtors">
+                {realtors != null ? (
+                    <Fragment>
+                        {   filtered !== null ? 
+                            filtered.map( realtor => ( 
+                            <RealtorItem realtor={realtor} key={realtor._id} /> )) 
+                            :
+                            <Fragment>
+                                <h1 className='heading-1 description'>Realtor Lists</h1>
+                                {realtors.map( realtor => ( 
+                                    <RealtorItem realtor={realtor} key={realtor._id} />
+                                ))}
+                            </Fragment>
+                        }
+                    </Fragment>
+                    ) : <Spinner />
+                } 
+            </section>
+            <footer className="realtor__footer">
+                <Footer />
+            </footer>
+        </div>
+    )
+}
+
+const RealtorHeader = () => {
+    return (
+        <Fragment>
+            <AuthLink />
+            <Sidebar />
+            <div className="realtor__header">
+                <h1 className="heading-1">The ultimate personal freedom</h1>
+                <RealtorFilter />
+            </div>
+        </Fragment>
+    )
+}
+
+const TopThreeRealtors = () => {
+    return (
+        <div className="top__realtors">
                 <h3 className="heading-3">Top 3 Realtors</h3>
                 <div className="realtors__list">
                     <img src="img/realtor-1.jpeg" alt="Realtor 1" className="realtors__img" />
@@ -72,32 +91,6 @@ const Realtors = () => {
                     </div>
                 </div>
             </div>
-
-        <section className="realtors" id="realtors">
-        {realtors != null ? (
-            <Fragment>
-                {   
-                    filtered !== null ? 
-                    filtered.map( realtor => ( 
-                    <RealtorItem realtor={realtor} key={realtor._id} />
-                    )) 
-                    :
-                    <Fragment>
-                        <h1 className='heading-1 description'>Newest Listings</h1>
-                        {realtors.map( realtor => ( 
-                            <RealtorItem realtor={realtor} key={realtor._id} />
-                        ))}
-                    </Fragment>
-                }
-            </Fragment>
-            ) : <Spinner />
-        } 
-        </section>
-
-        <footer className="realtor__footer">
-            <Footer />
-        </footer>
-    </div>
     )
 }
 

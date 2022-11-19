@@ -188,7 +188,7 @@ cloudinary.config({
   api_key: config.get("api_key"),
   api_secret: config.get("api_secret"),
 });
-
+ 
 
 router.post("/image", async (req, res) => {
   const { public_id } = req.body;
@@ -199,6 +199,6 @@ router.post("/image", async (req, res) => {
     console.error(err.message);
     res.status(400).send("server Error");
   }
-});
-
-module.exports = router;
+}); 
+  
+module.exports = router; 

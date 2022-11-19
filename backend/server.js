@@ -22,7 +22,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.get('/', (req, res) => {res.json({'msg':'hello'})})
 const PORT = process.env.PORT || 6000
-
+ 
 // Define Routes
 app.use('/api/users', require('./routes/users'))
 app.use('/api/authRealtor', require('./routes/realtorAuth'))

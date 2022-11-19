@@ -20,10 +20,10 @@ const HomeItem = (props) => {
 	
 	const { home } = props
 	const [state, setState] =useState(initialState)
-	const {likes, favourites, message, controler } = state
+	const { likes } = state
 
     const houseContext = useContext(HouseContext)
-    const { getHouse } =  houseContext
+    const { house, getHouse } =  houseContext
 
 	const navigate = useNavigate()
 
@@ -32,11 +32,10 @@ const HomeItem = (props) => {
 		location, 
 		area, 
 		bed,
-		bath, 
 		price, 
 		houseImages,
-			_id
-		} = home
+		_id
+	} = home
 
 	
 
@@ -51,8 +50,8 @@ const HomeItem = (props) => {
 
 	const handleView = () => {
 		getHouse(_id)
+		console.log(house)
 		navigate(`house/${_id}`)
-		
 	}
 	
 	
