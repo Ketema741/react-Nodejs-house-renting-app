@@ -2,6 +2,8 @@ import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom';
 
 import { ImNotification } from 'react-icons/im'
+import { CgProfile } from 'react-icons/cg'
+import { RiLogoutCircleLine } from 'react-icons/ri'
 
 import AuthContext from '../../context/realtorAuth/authContext';
 
@@ -18,18 +20,31 @@ const AuthLink = () => {
     const authLinks = (
       <Fragment>
         <div className="user-nav__user">
-        Hi &nbsp;
-        <span className="user-nav__user-name"> {realtor &&  realtor.name.split(" ")[0]}&nbsp;</span>
-          <img 
-            src="img/realtor-1.jpeg" 
-            alt="realtor" 
-            className="user-nav__user-photo" 
-          /> 
+            Hi &nbsp;
+            <span className="user-nav__user-name"> {realtor &&  realtor.name.split(" ")[0]}&nbsp;</span>
+              
+            <div class="dropdown ">
+              <div  className='drodbtn'> 
+                <img 
+                  src="img/realtor-1.jpeg" 
+                  alt="realtor" 
+                  className="user-nav__user-photo"
+                /> 
+              </div>
+              <div class="dropdown-content">
+                <Link to="/realtor/edit-profile" className="nav__profile">
+                  <CgProfile className='nav__profile-icon' />
+                  Profile 
+                </Link>
+                <Link to="/" className="nav__profile" onClick={onLogout}>
+                  <RiLogoutCircleLine className='nav__profile-icon' />
+                  Logout 
+                </Link>
+              </div>
+            </div> 
         </div>
   
-        <Link className='nav__link' to='/realtors' onClick={onLogout}>
-          <span className='hide-sm'>Logout</span>
-        </Link>
+        
       </Fragment>
     );
   

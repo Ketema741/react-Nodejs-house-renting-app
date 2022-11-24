@@ -147,8 +147,8 @@
 
 .section-login {
     padding: 8rem 0;
-    background-image: -webkit-gradient(linear, left top, right bottom, from(#c69963), to(#54483A));
-    background-image: linear-gradient(to right bottom, #c69963, #54483A);
+    background-color:rgba(16, 29, 44, 0.526);
+    
 }
 
 @media only screen and (max-width: 56.25em) {
@@ -158,25 +158,15 @@
 }
 
 .login {
-    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(/public/img/gal-1.jpeg);
+  
     background-size: 100%;
     border-radius: 3px;
     -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2)
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(rgba(16, 29, 44, 0.9), rgba(16, 29, 44, 0.93)), url(/public//img/gal-1.jpeg);
 }
 
-@media only screen and (max-width: 75em) {
-    .login {
-        background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(/public/img/gal-1.jpeg);
-        background-size: cover
-    }
-}
 
-@media only screen and (max-width: 56.25em) {
-    .login {
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(/public/img/gal-1.jpeg)
-    }
-}
 
 .login__form {
     width: 50%;
@@ -197,29 +187,51 @@
 
 .login-container {
     display: grid;
-    grid-template-rows: 40vh  min-content;
+    grid-template-rows: 45vh  repeat(2, max-content);
     grid-template-columns: [f-start]  [c-start] repeat(8, minmax(min-content, 14rem) ) [c-end] minmax(6rem, 1fr) [f-end];
     grid-row-gap: 0rem;
+    
 }
 
+/* register user */
+.register-container {
+    display: grid;
+    grid-template-rows: 25vh  repeat(2, max-content);
+    grid-template-columns: [f-start]  [c-start] repeat(8, minmax(min-content, 14rem) ) [c-end] minmax(6rem, 1fr) [f-end];
+    grid-row-gap: rem;
+   
+    
+}
+@media only screen and (max-width: 75em) {
+    .login-container {
+        grid-template-rows: 30vh  min-content;
+
+    }
+}
+
+@media only screen and (max-width: 56.25em) {
+    .login-container {
+        grid-template-rows: 35vh  min-content;
+
+    }
+}
 .login-header {
-    background-color: #413f3c;
     grid-column: f-start / -1;
     grid-row: 1 / 2;
-    background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public/img/hero.jpeg);
+    background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public/img/gal-1.jpeg);
     background-size: cover;
     background-position: c;
     padding: 8rem;
     padding-top: 4rem;
     display: grid;
-    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
     grid-template-columns: minmax(min-content, max-content);
     grid-row-gap: 1.5rem;
-    justify-content: c;
+    justify-content: center;
 }
 
 .login__section {
     grid-column: c-start / c-end;
+    
 }
 
 @media only screen and (max-width: 50em) {
@@ -231,5 +243,21 @@
 @media only screen and (max-width: 37.5em) {
     .login-header {
         padding: 5rem;
+    }
+}
+
+.login__heading-1{
+    font-size: 4rem;
+    line-height: 1;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 56.25em) {
+    .login__heading-1{
+    font-size: 3rem;
+    line-height: .5;
+    font-weight: 200;
+
     }
 }

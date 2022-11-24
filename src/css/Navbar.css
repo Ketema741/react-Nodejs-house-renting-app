@@ -1,9 +1,9 @@
 .header__nav {
     font-size: 1.4rem;
     height: 7rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    position: absolute;
+    top: 1rem;
+    right: 8rem
 }
 
 .search__input {
@@ -53,8 +53,8 @@
 }
 
 .user-nav {
-    align-self: stretch;
     display: flex;
+    align-self: stretch;
     align-items: center;
 }
 
@@ -89,8 +89,8 @@
     background-color: var(--color-primary);
     color: #fff;
     position: absolute;
-    top: 1.5rem;
-    right: 1.1rem;
+    top: -1.2rem;
+    right: .9rem;
     display: flex;
     justify-content: center;
     align-items: center
@@ -102,12 +102,33 @@
     text-transform: uppercase;
     margin-top: 1.75rem;
 }
+.nav__profile {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 2rem;
+    font-size: 1.4rem;
+    transition: .2s eas-in-out;
+    
 
+}
+.nav__profile-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+.nav__profile:hover {
+    font-size: 1.6rem;
+}
 .user-nav__user-photo {
     height: 3.75rem;
     border-radius: 50%;
     margin-right: 1rem
 }
+
+
+
 
 .sd-nav {
     font-size: 1.4rem;
@@ -167,3 +188,50 @@
     margin-right: .5rem;
     fill: currentColor
 }
+
+
+ /* Home Page dropdown menu */
+.nav__profile {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 2rem;
+    font-size: 1.4rem;
+    transition: .2s eas-in-out;
+  }
+
+  .nav__profile-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+  }
+  .nav__profile:hover {
+    font-size: 1.6rem;
+  }
+ 
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    background-color: #0d1c2d;
+    border:.1rem solid #54483A;
+    right: 1rem;
+    z-index: 1;
+    border-radius:.1rem;
+    width: 15rem;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: #fff;
+    margin-right: 2rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    margin-right: 2rem;
+  }

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa'
 import { ImNotification } from 'react-icons/im'
 
-import AuthContext from '../../context/userAuth/authContext';
+import AuthContext from '../../context/realtorAuth/authContext';
 
 
 const AuthLink = () => {
     const authContext = useContext(AuthContext)
 
-    const { isUserAuthenticated, user, logout } = authContext
+    const { isRealtorAuthenticated, realtor, logout } = authContext
   
     const onLogout = () => {
       logout()
@@ -22,7 +22,7 @@ const AuthLink = () => {
       <Fragment>
         <div className="user-nav__user">
         Hi &nbsp;
-        <span className="user-nav__user-name"> {user &&  user.name.split(" ")[0]}&nbsp;</span>
+        <span className="user-nav__user-name"> {realtor &&  realtor.name.split(" ")[0]}&nbsp;</span>
           <img 
             src="img/realtor-1.jpeg" 
             alt="realtor" 
@@ -59,7 +59,7 @@ const AuthLink = () => {
                 </span>
             </div>
 
-            {isUserAuthenticated? authLinks : guestLinks}
+            {isRealtorAuthenticated? authLinks : guestLinks}
         </nav>
       </div>
    )

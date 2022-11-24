@@ -1,6 +1,10 @@
 const mongoose = require ('mongoose')
 
 const UserSchema = mongoose.Schema ({
+    type: {
+        type:String,
+        required:true
+    },
     name: {
         type:String,
         required:true
@@ -23,15 +27,15 @@ const UserSchema = mongoose.Schema ({
     },
     experienceYear: {
         type:Number,
-        required: true
+
     },
     location: {
         type: String,
-        required: true
+ 
     },
     specializations: {
         type:String,
-        required: true
+  
     },
     activityRange: {
         type: Number, 

@@ -50,16 +50,15 @@ const Login = (props) => {
      return (
         <div className="login-container" >
             <header className="login-header">
-                <h3 className="heading-3">Your own home:</h3>
-                <h1 className="heading-1">The ultimate personal freedom</h1>
-                <div className="header__seenon-text">cozzy home</div>
+                <div className="header__seenon-text">Nexter House Rental</div>
+                <h1 className="login__heading-1">User Register Form</h1>
             </header>
             <div className="section-login">
                 <div className="row">
                     <div className="login">
                         <div className="login__form">
                             <form  className="form" onSubmit={onSubmit}>
-                            <Alert />
+                                <Alert />
                                 <input 
                                     id='email'
                                     type='email'
@@ -101,6 +100,7 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
+            
         </div>
     )
 }

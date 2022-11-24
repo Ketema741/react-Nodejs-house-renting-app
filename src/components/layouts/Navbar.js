@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import HomeFilter from '../houses/HomeFilter'
 
 import Sidebar from './Sidebar'
-import AuthLink from './UserAuthLink'
+import AuthLink from './RealtorAuthLink'
 
 
 const Navbar = () => {

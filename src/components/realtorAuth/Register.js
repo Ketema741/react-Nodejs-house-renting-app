@@ -18,6 +18,7 @@ const Register = (props) => {
     
     const [realtor, setRealtor] = useState(
         {
+            type:'user',
             name:'',
             email: '',
             password: '',
@@ -35,6 +36,7 @@ const Register = (props) => {
     const [imageToRemove, setImageToRemove] = useState()
     
     const {  
+        type,
         name, 
         email, 
         password, 
@@ -93,18 +95,160 @@ const Register = (props) => {
     
 
     return (
-        <div className="login-container" style={style}>
+        <div className="register-container" style={style}>
             <header className="login-header">
-                <h3 className="heading-3">Your own home:</h3>
-                <h1 className="heading-1">The ultimate personal freedom</h1>
-                <div className="header__seenon-text">cozzy home</div>
+                <div className="header__seenon-text">Nexter House Rental</div>
+                <h1 className="login__heading-1">User Register Form</h1>
             </header>
             <div className="section-login">
                 <div className="row">
                     <div className="login">
                         <div className="login__form">
                             <Alert />
+                            {type === 'user' ?
+                            <form className="form" onSubmit={onSubmit}>
+                                <h1 className='heading-1'> User Type </h1>
+                                <div>
+                                    <input
+                                        type='radio'
+                                        name='type'
+                                        value='user'
+                                        checked={type === 'user'}
+                                        onChange={onChange}
+                                    />{' '}
+                                    <span className= 'heading-4'> User{' '}</span>
+                                </div>
+                                <div>
+                                    <input
+                                    type='radio'
+                                    name='type'
+                                    value='realtor'
+                                    checked={type === 'realtor'}
+                                    onChange={onChange}
+                                    /> {' '}
+                                    <span className='heading-4'> Realtor</span>
+                                </div>
+                                
+                                <CloudinaryUploadWidget handleOpenWidget={handleOpenWidget} />
+                                
+                                <div className='img__preview-container'>
+                                    {images !== null && images.map((image)=>(
+                                    <div className="image__preview">
+                                        <img src={image.url} alt='house preview' className='choosen__img' />
+                                        {imageToRemove !== image.public_id && 
+                                            <i className="fa fa-times-circle close-icon delete" onClick={()=>handleDelete(image)}> </i>
+                                        }      
+                                    </div>
+                                ))} 
+                                </div>
+                                <input 
+                                id='name'
+                                type='text'
+                                name='name'
+                                value={name}
+                                onChange={onChange}
+                                required
+                                className="form__input" 
+                                placeholder="full name" 
+                            />
+                            <label 
+                                htmlFor="name" 
+                                className="form__label">
+                                Full Name
+                            </label>
+
+                            <input 
+                                id='email'
+                                type='email'
+                                name='email'
+                                value={email}
+                                onChange={onChange}
+                                required
+                                className="form__input" 
+                                placeholder="email" 
+                            />
+                            <label 
+                                htmlFor="email" 
+                                className="form__label">
+                                Email
+                            </label>
+                            <input 
+                                id="phone" 
+                                type="text" 
+                                name='phone'
+                                placeholder="phone " 
+                                className="form__input" 
+                                onChange={onChange} 
+                                required
+                            />
+                            <label 
+                                htmlFor="phone" 
+                                className="form__label">
+                                phone
+                            </label>
+
+                            <input 
+                                id="password" 
+                                type="password" 
+                                name='password'
+                                placeholder="Password " 
+                                className="form__input" 
+                                onChange={onChange} 
+                                required
+                                minLength='6'
+                            />
+                            <label 
+                                htmlFor="password" 
+                                className="form__label">
+                                Password
+                            </label>
+                                
+                            <input 
+                                id="password2" 
+                                type="password" 
+                                name='password2'
+                                placeholder="Confirm Password " 
+                                className="form__input" 
+                                onChange={onChange} 
+                                required
+                                minLength='6'
+                            />
+                            <label 
+                                htmlFor="password2" 
+                                className="form__label">
+                                Confirm Password
+                            </label>
+                            
+                            <input 
+                                type="submit"  
+                                value="signup" 
+                                name="submit" 
+                                className="btn btn--green" 
+                            />
+                            </form>
+                            :
                             <form  className="form" onSubmit={onSubmit}>
+                                <h1 className='heading-1'> User Type </h1>
+                                <div>
+                                    <input
+                                        type='radio'
+                                        name='type'
+                                        value='user'
+                                        checked={type === 'user'}
+                                        onChange={onChange}
+                                    />{' '}
+                                    <span className= 'heading-4'> User{' '}</span>
+                                </div>
+                                <div>
+                                    <input
+                                    type='radio'
+                                    name='type'
+                                    value='realtor'
+                                    checked={type === 'realtor'}
+                                    onChange={onChange}
+                                    /> {' '}
+                                    <span className='heading-4'> Realtor</span>
+                                </div>
                                 <CloudinaryUploadWidget handleOpenWidget={handleOpenWidget} />
                                     <div className='img__preview-container'>
                                         {images !== null && images.map((image)=>(
@@ -124,12 +268,12 @@ const Register = (props) => {
                                     onChange={onChange}
                                     required
                                     className="form__input" 
-                                    placeholder="name" 
+                                    placeholder="full name" 
                                 />
                                 <label 
                                     htmlFor="name" 
                                     className="form__label">
-                                    Name
+                                    Full Name
                                 </label>
 
                                 <input 
@@ -241,8 +385,6 @@ const Register = (props) => {
                                     Description
                                 </label>
 
-                                
-                                
                                 <input 
                                     id="password" 
                                     type="password" 
@@ -281,6 +423,7 @@ const Register = (props) => {
                                     className="btn btn--green" 
                                 />
                             </form>
+                        }
                         </div>
                     </div>
                 </div>

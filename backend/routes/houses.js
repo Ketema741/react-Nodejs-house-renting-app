@@ -172,16 +172,25 @@ router.delete("/:id", realtorAuth, async (req, res) => {
       return res.status(401).json({ msg: "Not authorized" });
     }
 
+    const { houseImages } = house
+    deleteImage(houseImages)    
+   
     await House.findByIdAndRemove(req.params.id);
-
-    res.json({ msg: "Realtor removed" });
+    res.json({ msg: "house removed" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-});
-
-
+}); 
+ 
+const deleteImage = async(houseImages) => {
+  if(houseImages.length >= 1) {
+    for (const image of houseImages) {
+      const res = await cloudinary.uploader.destroy(image.public_id);
+      console.log(res)
+    }
+  }
+}
 
 cloudinary.config({
   cloud_name: config.get("cloud_name"),

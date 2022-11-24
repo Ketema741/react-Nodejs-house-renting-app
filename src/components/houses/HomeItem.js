@@ -57,8 +57,8 @@ const HomeItem = (props) => {
 	
   return (
     <div className="home">
-			<img src={houseImages[0].url} alt={title} className="home__img" />
-			
+			<img src={houseImages.length >=1 ? houseImages[0].url:'/public/img/gal-1.jpeg'} alt={title} className="home__img" />
+			 
 			{likes? 
 				(<VscHeart className="home__like" color='red' onClick={like} />)
 				:

@@ -13,14 +13,13 @@ import {
   LOGIN_FAIL,
   LOGOUT
   
-} from '../types';
+} from '../Types';
 
 const AuthState = (props) => {
     const initialState = {
       realtor: null,
-      realtorToken: localStorage.getItem('realtortoken'),
+      token: localStorage.token,
       isRealtorAuthenticated: null,
-      isUserAuthenticated: null,
       realtorLoading: true,
       error: null
     };
@@ -109,8 +108,8 @@ const AuthState = (props) => {
 
     // load realtor
     const loadRealtor = async () => {
-      if(localStorage.realtortoken) {
-        setAuthToken(localStorage.realtortoken, 'realtortoken')
+      if(localStorage.token) {
+        setAuthToken(localStorage.token)
       }
       const res = await axios.get('api/authRealtor')
       
@@ -129,7 +128,7 @@ const AuthState = (props) => {
     // clear error
    
     // set token on initial app loading
-    // setAuthToken(state.realtorToken, 'realtortoken');
+    setAuthToken(state.token);
    
 
     // load realtor on first run or refresh
@@ -139,8 +138,8 @@ const AuthState = (props) => {
 
     // 'watch' state.token and set headers and local storage on any change
     useEffect(() => {
-      setAuthToken(state.realtorToken, 'realtortoken');
-    }, [state.realtorToken]);
+      setAuthToken(state.token);
+    }, [state.token]);
    
 
     // AuthState Provider Component

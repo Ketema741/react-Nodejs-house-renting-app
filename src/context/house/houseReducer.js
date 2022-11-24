@@ -11,7 +11,7 @@ import {
   CLEAR_HOUSES,
   CLEAR_FILTER,
   HOUSE_ERROR
-  } from '../types';
+  } from '../Types';
   
   const houseReducer = (state, action) => {
     switch (action.type) {

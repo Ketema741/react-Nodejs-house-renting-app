@@ -174,8 +174,8 @@ code {
 
 .header__seenon-text {
     display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    grid-column-gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1rem;
     align-items: center;
     font-size: 1.6rem;
     color: #aaa;

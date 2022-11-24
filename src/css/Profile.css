@@ -1,0 +1,51 @@
+.profile__container {
+  display: grid;
+  grid-template-rows: 25vh repeat(2, min-content);
+  grid-template-columns: [sidebar-start] 17rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  grid-row-gap: 10rem;
+  background-color:rgba(16, 29, 44, 0.526);
+
+
+}
+
+.profile__header {
+  grid-column:  sidebar-end / full-end;
+  grid-row: 1 / 2;
+  background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public/img/hero.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.profile__sidebar {
+  background-color: rgba(16, 29, 44, 0.96);
+  grid-column: sidebar-start / sidebar-start;
+  grid-row: 1 / -1;
+}
+
+@media only screen and (max-width: 50em) {
+  .header {
+      grid-column: full-start / -1;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .header {
+      padding: 5rem;
+  }
+}
+
+.profile__side-nav {
+  font-size: 1.8rem;
+  list-style: none;
+  margin-top: 5rem;
+  margin-left: 1rem;
+  position: fixed;
+}
+
+.section__update {
+  grid-column: col-start 2 / col-end 7;
+}
+
+.profile__footer {
+  grid-column: full-start / full-end;
+}

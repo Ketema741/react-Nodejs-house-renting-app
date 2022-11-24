@@ -7,7 +7,7 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_ERRORS
-  } from '../types';
+  } from '../Types';
   
   const authReducer = (state, action) => {
     switch (action.type) {
@@ -19,7 +19,7 @@ import {
           realtor: action.payload
         };
       case REGISTER_SUCCESS:
-        localStorage.setItem('realtortoken', action.payload.token)
+        localStorage.setItem('token', action.payload.token)
         return {
           ...state,
           ...action.payload,
@@ -27,7 +27,7 @@ import {
           realtorLoading:false
         }
       case LOGIN_SUCCESS:
-        localStorage.setItem('realtortoken', action.payload.token)
+        localStorage.setItem('token', action.payload.token)
         return {
           ...state,
           ...action.payload,
@@ -38,7 +38,7 @@ import {
       case AUTH_ERROR:
       case LOGIN_FAIL:
       case LOGOUT:
-        localStorage.removeItem('realtortoken')
+        localStorage.removeItem('token')
         return {
           ...state,
           token: null,

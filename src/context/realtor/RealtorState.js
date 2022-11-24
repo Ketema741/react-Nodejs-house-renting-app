@@ -15,7 +15,7 @@ import {
   CLEAR_REALTORS,
   CLEAR_FILTER,
   REALTOR_ERROR
-} from '../types';
+} from '../Types';
 
 
 

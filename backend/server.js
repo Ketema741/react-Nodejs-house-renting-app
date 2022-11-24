@@ -24,9 +24,7 @@ app.get('/', (req, res) => {res.json({'msg':'hello'})})
 const PORT = process.env.PORT || 6000
  
 // Define Routes
-app.use('/api/users', require('./routes/users'))
 app.use('/api/authRealtor', require('./routes/realtorAuth'))
-app.use('/api/authUser', require('./routes/userAuth'))
 app.use('/api/houses', require('./routes/houses'))
 app.use('/api/realtors', require('./routes/realtors'))
 
