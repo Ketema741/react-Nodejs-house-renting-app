@@ -20,9 +20,6 @@ const AuthLink = () => {
     const authLinks = (
       <Fragment>
         <div className="user-nav__user">
-            Hi &nbsp;
-            <span className="user-nav__user-name"> {realtor &&  realtor.name.split(" ")[0]}&nbsp;</span>
-              
             <div class="dropdown ">
               <div  className='drodbtn'> 
                 <img 
@@ -32,7 +29,9 @@ const AuthLink = () => {
                 /> 
               </div>
               <div class="dropdown-content">
-                <Link to="/realtor/edit-profile" className="nav__profile">
+             
+              <div className="user-nav__user-email "> {realtor &&  realtor.email}</div>
+                <Link to="/edit-profile" className="nav__profile">
                   <CgProfile className='nav__profile-icon' />
                   Profile 
                 </Link>

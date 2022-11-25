@@ -10,6 +10,7 @@ import {
   REALTOR_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
+  SET_CURRENT,
   LOGIN_FAIL,
   LOGOUT
   
@@ -18,6 +19,7 @@ import {
 const AuthState = (props) => {
     const initialState = {
       realtor: null,
+      currentRealtor: null,
       token: localStorage.token,
       isRealtorAuthenticated: null,
       realtorLoading: true,
@@ -125,7 +127,10 @@ const AuthState = (props) => {
       }
     }
    
-    // clear error
+    // set current
+  const setCurrent = (realtor) => {
+    dispatch({ type: SET_CURRENT, payload: realtor })
+  }
    
     // set token on initial app loading
     setAuthToken(state.token);
@@ -146,9 +151,11 @@ const AuthState = (props) => {
     return (
       <AuthContext.Provider value={{
         realtor: state.realtor,
+        currentRealtor: state.currentRealtor,
         error: state.error,
         isRealtorAuthenticated: state.isRealtorAuthenticated,
         realtorRegister,
+        setCurrent,
         realtorLogin,
         logout,
         loadRealtor,

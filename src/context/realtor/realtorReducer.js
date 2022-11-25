@@ -20,11 +20,11 @@ import {
           realtors: action.payload
         };
        
-        case GET_REALTOR:
-          return {
-            ...state,
-            realtor: action.payload
-          };
+      case GET_REALTOR:
+        return {
+          ...state,
+          realtor: action.payload
+        };
       case ADD_REALTOR:
         return {
           ...state,
@@ -33,9 +33,8 @@ import {
       case UPDATE_REALTOR:
         return {
           ...state,
-          realtors: state.realtors.map((realtor) =>
-            realtor._id === action.payload._id ? action.payload : realtor
-          )
+          realtor:  action.payload 
+          
         };
       case DELETE_REALTOR:
         return {

@@ -29,7 +29,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='realtorlogin' element={<RealtorLogin />} />
           <Route path='realtorregister' element={<RealtorRegister />} />
-          <Route path='realtor/edit-profile' element={<Profile />} />
+          <Route path='/edit-profile' element={<Profile />} />
           <Route element={<PrivateRoute />}>
             <Route element={<RealtorHomes />} path='realtordashboard' />
           </Route>

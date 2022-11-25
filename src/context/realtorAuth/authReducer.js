@@ -4,6 +4,7 @@ import {
     REALTOR_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
+    SET_CURRENT,
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_ERRORS
@@ -52,6 +53,11 @@ import {
           ...state,
           error: null
         };
+        case SET_CURRENT:
+          return {
+            ...state,
+            currentRealtor: action.payload
+          };
       default:
         throw new Error(`Unsupported type of: ${action.type}`);
     }

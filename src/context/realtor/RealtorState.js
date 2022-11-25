@@ -126,7 +126,7 @@ const RealtorState = (props) => {
     }
 
     try {
-      const res = await axios.put(`api/houses/${realtor._id}`, realtor, config)
+      const res = await axios.put(`api/realtors/${realtor._id}`, realtor, config)
       dispatch({
         type: UPDATE_REALTOR, 
         payload: res.data
@@ -135,7 +135,6 @@ const RealtorState = (props) => {
       dispatch({ type: REALTOR_ERROR })
     }
   }
-
 
   // set current
   const setCurrent = (house) => {

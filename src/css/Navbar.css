@@ -219,7 +219,7 @@
     right: 1rem;
     z-index: 1;
     border-radius:.1rem;
-    width: 15rem;
+    width: 18rem;
   }
   
   .dropdown-content a {
@@ -229,6 +229,10 @@
     text-decoration: none;
     display: block;
     text-align: left;
+  }
+  .user-nav__user-email {
+    padding: 1rem;
+    padding-bottom: 0rem
   }
   
   .dropdown:hover .dropdown-content {

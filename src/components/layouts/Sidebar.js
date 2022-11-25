@@ -4,6 +4,7 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { MdOutlineSell } from 'react-icons/md'
 import { BsCreditCard2Back } from 'react-icons/bs'
 import { BsCalendar2Month } from 'react-icons/bs'
+import { MdRealEstateAgent } from 'react-icons/md'
 
 const Sidebar = () => {
     return(
@@ -38,6 +39,7 @@ const Sidebar = () => {
                 </li>
                 <li className="sd-nav__item">
                     <Link to="/realtors" className="sd-nav__link">
+                        <MdRealEstateAgent className="sd-nav__icon" />
                         <span>Realtor </span>
                     </Link>
                 </li>

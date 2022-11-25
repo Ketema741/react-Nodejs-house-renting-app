@@ -181,7 +181,7 @@ const AddForm = () => {
                                 </label>
                             </div>
                             <div className="form__input--col-1">
-                                <input onChange={onChange} value={yearBuilt} type="date" className="form__input" placeholder="Year Built" name="yearBuilt"
+                                <input onChange={onChange} value={yearBuilt} type="text" className="form__input" placeholder="Year Built" name="yearBuilt"
                                 id="yearBuilt" required
                                 />
                                 <label htmlFor="yearBuilt" className="form__label">Year Built

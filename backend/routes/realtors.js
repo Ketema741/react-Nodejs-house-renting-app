@@ -56,10 +56,6 @@ router.post(
             .not()
             .isEmpty()
             .isLength({min:10}),
-        check("description", "please add description").not().isEmpty(),
-        check("experienceYear", "please add experience Year").not().isEmpty(),
-        check("location", "please add location").not().isEmpty(),
-        check("specializations", "please add Specializations").not().isEmpty(),
         
     ],
     async (req, res) => { 
@@ -135,6 +131,7 @@ router.post(
     // @access    Private
     router.put("/:id", realtorAuth, async (req, res) => {
         const {
+            _id,
             name, 
             email, 
             password, 
@@ -164,7 +161,7 @@ router.post(
         if (!realtor) return res.status(404).json({ msg: "realtor not found" });
     
         realtor = await Realtor.findByIdAndUpdate(
-            req.params.id,
+            _id,
             { $set: realtorFields },
             { new: true }
         );
