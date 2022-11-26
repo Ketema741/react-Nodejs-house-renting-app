@@ -27,5 +27,5 @@ const PORT = process.env.PORT || 6000
 app.use('/api/authRealtor', require('./routes/realtorAuth'))
 app.use('/api/houses', require('./routes/houses'))
 app.use('/api/realtors', require('./routes/realtors'))
- 
+
 app.listen(PORT, ()=>{console.log(`server started at port: ${PORT}`)})

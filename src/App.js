@@ -35,6 +35,7 @@ function App() {
           </Route>
           <Route path='house/:houseId' element={<HomeDetail />} />
           <Route path='realtors' element={<Realtors />} />
+         
         </Routes>
       </Router>
     </RealtorState>

@@ -1,7 +1,7 @@
 .profile__container {
   display: grid;
   grid-template-rows: 25vh repeat(2, min-content);
-  grid-template-columns: [sidebar-start] 17rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  grid-template-columns: [sidebar-start] 19rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
   grid-row-gap: 10rem;
   background-color:rgba(16, 29, 44, 0.526);
 

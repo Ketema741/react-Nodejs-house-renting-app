@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { ImNotification } from 'react-icons/im'
 import { CgProfile } from 'react-icons/cg'
 import { RiLogoutCircleLine } from 'react-icons/ri'
+import { MdDashboard } from 'react-icons/md'
+import { BiUserCircle } from 'react-icons/bi'
 
 import AuthContext from '../../context/realtorAuth/authContext';
 
@@ -20,21 +22,26 @@ const AuthLink = () => {
     const authLinks = (
       <Fragment>
         <div className="user-nav__user">
-            <div class="dropdown ">
+            <div className="dropdown ">
               <div  className='drodbtn'> 
-                <img 
-                  src="img/realtor-1.jpeg" 
-                  alt="realtor" 
-                  className="user-nav__user-photo"
-                /> 
+                  <BiUserCircle className="nav__profile-icon" />
+             
+                
+               
               </div>
-              <div class="dropdown-content">
+              <div className="dropdown-content">
              
               <div className="user-nav__user-email "> {realtor &&  realtor.email}</div>
                 <Link to="/edit-profile" className="nav__profile">
                   <CgProfile className='nav__profile-icon' />
                   Profile 
                 </Link>
+                {realtor && realtor.type === 'realtor' &&
+                <Link to="/realtordashboard" className="nav__profile" >
+                  <MdDashboard className='nav__profile-icon' />
+                  Dashboard 
+                </Link>
+               }
                 <Link to="/" className="nav__profile" onClick={onLogout}>
                   <RiLogoutCircleLine className='nav__profile-icon' />
                   Logout 
@@ -58,7 +65,7 @@ const AuthLink = () => {
         <nav className="user-nav">
             
           <div className="user-nav__icon-box">
-              <ImNotification />
+              <ImNotification  />
               <span className="user-nav__notification">
                 0 
               </span>

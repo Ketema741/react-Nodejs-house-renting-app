@@ -1,20 +1,22 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { useContext, useState } from "react";
 import HouseContext from "../../context/house/houseContext";
+import Warning from '../modal/Warning'
 
 import { FaMap  } from 'react-icons/fa'
-import { VscHeart  } from 'react-icons/vsc'
-import { RiHeartFill  } from 'react-icons/ri'
 import { GiHouseKeys  } from 'react-icons/gi'
 import { AiOutlineAreaChart  } from 'react-icons/ai'
 import { GiFamilyHouse  } from 'react-icons/gi'
 
 
 const RealtorHomeItem = ({ home }) => {
+    const [modalOpen, setModalOpen] = useState(false);
     const houseContext = useContext(HouseContext)
     const { deleteHouse, setCurrent, clearCurrent } = houseContext
+
     const { _id } = home
     const onDelete = () => {
         deleteHouse(_id)
+        setModalOpen(false)
         clearCurrent()
     }
     return(
@@ -39,14 +41,15 @@ const RealtorHomeItem = ({ home }) => {
                        <p>{home.price} ETB</p> 
                    </div>
                    <button 
-                        onClick={onDelete} 
+            
                         className="btn home__btn" 
-                        > Delete 
+                        >  
                     </button>
-               </div>
+                </div>
+                
                <div className="home__side home__side--back home__side--back-1">
                     <button
-                        onClick={onDelete} 
+                        onClick={() => setModalOpen(true)}
                         className="btn home__btn" 
                         > Delete 
                     </button>
@@ -56,6 +59,7 @@ const RealtorHomeItem = ({ home }) => {
                         > Edit 
                     </button>                
                 </div>
+                {modalOpen && <Warning onDelete = {onDelete} setModalOpen={setModalOpen} />}
         </div>
     )
 }

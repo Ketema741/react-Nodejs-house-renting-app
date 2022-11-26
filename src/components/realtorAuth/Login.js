@@ -26,7 +26,7 @@ const Login = (props) => {
     
     useEffect(() => {
       if(isRealtorAuthenticated){
-        navigate('/realtordashboard')
+        navigate('/')
       }
       if(error === "Invalid Credentials") {
         setAlert(error, 'danger')

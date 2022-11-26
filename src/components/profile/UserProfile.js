@@ -1,14 +1,12 @@
 import React, { Fragment, useContext, useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 
 import Alert from '../layouts/Alerts'
 import Footer from '../layouts/Footer'
 import Spinner from '../layouts/Spinner'
+import SideBar from './SideBar'
 
-import { AiOutlineLogout } from 'react-icons/ai'
-import { AiOutlineHome } from 'react-icons/ai'
-import { CgProfile } from 'react-icons/cg'
-import { MdFavoriteBorder } from 'react-icons/md'
+
+
 
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/realtorAuth/authContext'
@@ -70,7 +68,7 @@ const UserProfile = () => {
 
   return (
     <div className='profile__container'>
-        <SideBar />
+        <SideBar realtor={realtor} />
         <div className="profile__header"> </div>
         <div className="section__update">
             <div className="row">
@@ -116,7 +114,8 @@ const UserProfile = () => {
                                 id="phone" 
                                 type="text" 
                                 name='phone'
-                                placeholder="phone " 
+                                value={phone}
+                                placeholder="phone" 
                                 className="form__input" 
                                 onChange={onChange} 
                                 required
@@ -156,8 +155,6 @@ const UserProfile = () => {
                                 className="form__label">
                                 Confirm Password
                             </label>
-                                
-                            
                             <input 
                                 type="submit"  
                                 value="Update" 
@@ -348,39 +345,6 @@ const UserProfile = () => {
         </div>
     </div>
   )
-}
-
-const SideBar = () => {
-    return (
-        <nav className="profile__sidebar">
-            <ul className="profile__side-nav">
-                <li className="sd-nav__item sd-nav__item">
-                    <Link to="/" className="sd-nav__link">
-                        <AiOutlineHome className='nav__profile-icon' />
-                        <span>Home</span>
-                    </Link>
-                </li>
-                <li className="sd-nav__item sd-nav__item--active">
-                    <Link to="/user/edit-profile" className="sd-nav__link">
-                        <CgProfile className='nav__profile-icon' />
-                        <span>Profile</span>
-                    </Link>
-                </li>
-                <li className="sd-nav__item">
-                    <Link to="/user/favorite" className="sd-nav__link">
-                        <MdFavoriteBorder className='nav__profile-icon' />
-                    <span>Favorite</span>
-                    </Link>
-                </li>
-                <li className="sd-nav__item">
-                    <Link to="/user/favorite" className="sd-nav__link">
-                        <AiOutlineLogout className='nav__profile-icon' />
-                        <span>Logout</span>
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    )
 }
 
 export default UserProfile;

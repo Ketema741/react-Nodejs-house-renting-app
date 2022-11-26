@@ -53,7 +53,12 @@
       padding: 5rem;
     }
   }
-
+.dashboard__btn{
+  position: absolute;
+  left: 0rem;
+  top: 10rem;
+  width: 15rem;
+ }
   .realtor__pictures {
     background-color: #c69963;
     grid-column: full-start / col-end 4;

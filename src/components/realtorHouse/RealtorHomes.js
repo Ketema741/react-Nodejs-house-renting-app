@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, Fragment } from "react";
+import React, { useContext, useEffect } from "react";
+import { Link } from 'react-router-dom'
 
 import RealtorHomeItem from './RealtorHomeItem'
 import setAuthToken from '../../utils/setAuthToken';
@@ -18,9 +19,10 @@ if(localStorage.token) {
 const Header =() => {
     return (
         <header className="add-header">
-            <h3 className="heading-3">Your own home:</h3>
-            <div className="header__seenon-text">cozzy home</div>
-            <h1 className="heading-1">The ultimate personal freedom</h1>
+        <h3 className="heading-3">Your own home:</h3>
+        <div className="header__seenon-text">cozzy home</div>
+        <h1 className="heading-1">The ultimate personal freedom</h1>
+        <Link to="/" className="btn dashboard__btn">Back</Link>
         </header>
     ) 
 }
