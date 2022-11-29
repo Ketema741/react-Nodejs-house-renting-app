@@ -49,8 +49,13 @@ const UserSchema = mongoose.Schema ({
         type: Number,
         default: null
     },
+    favourites: {
+        type: [Object],
+        default:[]
+    },
     realtorImage: {
 		type: [Object],
+        default:[]
 	},
     date: {
         type: Date,

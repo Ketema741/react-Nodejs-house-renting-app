@@ -131,16 +131,16 @@ router.post(
     // @access    Private
     router.put("/:id", realtorAuth, async (req, res) => {
         const {
-            _id,
-            name, 
-            email, 
-            password, 
-            phone,
-            description,
-            experienceYear,
-            location,
-            specializations,
-            activityRange,
+          _id,
+          name, 
+          email, 
+          password, 
+          phone,
+          description,
+          experienceYear,
+          location,
+          specializations,
+          activityRange,
         } = req.body;
     
         // Build realtor object
@@ -162,7 +162,7 @@ router.post(
     
         realtor = await Realtor.findByIdAndUpdate(
             _id,
-            { $set: realtorFields },
+            { $set: realtorFields }, 
             { new: true }
         );
     
@@ -172,6 +172,41 @@ router.post(
         res.status(500).send("Server Error");
         }
     });
+
+
+  router.put("/favourite/:id", async (req, res) => {
+    try {
+      
+      let realtor = await Realtor.findOneAndUpdate (
+        { _id: req.params.id},
+        { $addToSet: { favourites: req.body  } }
+      ) 
+
+      realtor = await realtor.save()
+      res.json(realtor);
+
+    } catch (err) {
+      console.error(err.message); 
+      res.status(500).send("Server Error");
+    }
+  });
+ 
+
+  router.put("/removefavourite/:id", async (req, res) => {
+    try {
+      
+      let realtor = await Realtor.updateOne (
+        { _id: req.params.id }, 
+        { $pull: { favourites: { houseId: req.body.favouriteId } } }
+      )
+      
+      res.json(realtor);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }     
+  })
+
   
   // @route     DELETE api/realtors/:id
   // @desc      Delete realtor

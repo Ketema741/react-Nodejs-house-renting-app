@@ -49,8 +49,6 @@ const AuthLink = () => {
               </div>
             </div> 
         </div>
-  
-        
       </Fragment>
     );
   

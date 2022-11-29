@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ContactSchema = new Schema({
 	realtor: {
 		type: Schema.Types.ObjectId,
-		ref: 'user'
+		ref: 'realtor'
 	},
 	houseImages: {
 		type: [Object],

@@ -1,4 +1,4 @@
-import React, {  useState, useContext } from 'react'
+import React, {  useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { FaMap  } from 'react-icons/fa'
@@ -9,24 +9,34 @@ import { AiOutlineAreaChart  } from 'react-icons/ai'
 import { GiFamilyHouse  } from 'react-icons/gi'
 
 import HouseContext from '../../context/house/houseContext'
+import AuthContext from '../../context/realtorAuth/authContext'
 
-const initialState = {
-		likes: true,
-		favourites: [],
-		message: null,
-		controler: false
-	}
-const HomeItem = (props) => {
-	
-	const { home } = props
-	const [state, setState] =useState(initialState)
-	const { likes } = state
+
+const HomeItem = ({ home, addToCart, removeFromCart }) => {
+	const [like, setLike] =useState(false)
+
 
     const houseContext = useContext(HouseContext)
+    const authContext = useContext(AuthContext)
+
     const { house, getHouse } =  houseContext
+	const { realtor } = authContext
+
+	
+
+	
+	let favouritesId = []
+	useEffect(()=>{
+		if(realtor.favourites){
+			realtor.favourites.forEach(house =>{
+				favouritesId.push(house._id)
+			})
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [realtor])
+	console.log(favouritesId)
 
 	const navigate = useNavigate()
-
 	const { 
 		title, 
 		location, 
@@ -37,14 +47,15 @@ const HomeItem = (props) => {
 		_id
 	} = home
 
-	
 
 	
-	const like = () => {
-		if (likes === true) {
-			setState({likes: false})
+	const onLike = () => {
+		if (_id === true) {
+			setLike(false)
+			removeFromCart(_id)
 		} else {
-			setState({likes: true})
+			setLike(true)
+			addToCart(_id)
 		}
 	}
 
@@ -59,10 +70,10 @@ const HomeItem = (props) => {
     <div className="home">
 			<img src={houseImages.length >=1 ? houseImages[0].url:'/public/img/gal-1.jpeg'} alt={title} className="home__img" />
 			 
-			{likes? 
-				(<VscHeart className="home__like" color='red' onClick={like} />)
+			{like? 
+				(<VscHeart className="home__like"  onClick={onLike} />)
 				:
-				(<RiHeartFill className="home__like" color='red' onClick={like} />)}
+				(<RiHeartFill className="home__like"  onClick={onLike} />)}
 			<h5 className="home__name">{title}</h5>
 
 			<div className="home__location">
