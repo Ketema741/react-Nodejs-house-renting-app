@@ -1,263 +1,261 @@
-
-
 ::-moz-selection {
-    background-color: #c69963;
-    color: #fff
+  background-color: #c69963;
+  color: #fff;
 }
 
 ::selection {
-    background-color: #c69963;
-    color: #fff
+  background-color: #c69963;
+  color: #fff;
 }
-
 
 .btn,
 .btn:link,
 .btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 10rem;
-    -webkit-transition: all .2s;
-    transition: all .2s;
-    position: relative;
-    font-size: 1.6rem;
-    border: none;
-    cursor: pointer
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
 }
 
 .btn:hover {
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px);
-    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2)
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover::after {
-    -webkit-transform: scaleX(1.4) scaleY(1.6);
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
 }
 
 .btn:active,
 .btn:focus {
-    outline: none;
-    -webkit-transform: translateY(-1px);
-    transform: translateY(-1px);
-    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2)
+  outline: none;
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .btn--green {
-    background-color: #c69963;
-    color: #fff
+  background-color: #c69963;
+  color: #fff;
 }
 
 .btn--green::after {
-    background-color: #c69963
+  background-color: #c69963;
 }
 
 .btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    -webkit-transition: all .4s;
-    transition: all .4s
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 .form__input {
-    font-size: 1.5rem;
-    font-family: inherit;
-    color: inherit;
-    padding: 1.5rem 2rem;
-    border-radius: 2px;
-    background-color: rbga(#fff, 0.5);
-    border: none;
-    border-bottom: 3px solid transparent;
-    width: 90%;
-    display: block;
-    -webkit-transition: all .3s;
-    transition: all .3s
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rbga(#fff, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 @media only screen and (max-width: 56.25em) {
-    .form__input {
-        width: 100%
-    }
+  .form__input {
+    width: 100%;
+  }
 }
 
 .form__input:focus {
-    outline: none;
-    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-    border-bottom: 3px solid #c69963
+  outline: none;
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #c69963;
 }
 
 .form__input:focus:invalid {
-    border-bottom: 3px solid #ff7730
+  border-bottom: 3px solid #ff7730;
 }
 
 .form__input::-webkit-input-placeholder {
-    color: #999
+  color: #999;
 }
 
 .form__label {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-left: 2rem;
-    margin-top: .7rem;
-    display: block;
-    -webkit-transition: all .3s;
-    transition: all .3s
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.form__input:placeholder-shown+.form__label {
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transform: translateY(-4rem);
-    transform: translateY(-4rem)
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
 }
-
 
 .row {
-    max-width: 114rem;
-    margin: 0 auto
+  max-width: 114rem;
+  margin: 0 auto;
 }
 
-
 @media only screen and (max-width: 56.25em) {
-    .row {
-        max-width: 50rem;
-        padding: 0 3rem
-    }
+  .row {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
 }
 
 .row::after {
-    content: "";
-    display: table;
-    clear: both
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .section-login {
-    padding: 8rem 0;
-    background-color:rgba(16, 29, 44, 0.526);
-    
+  padding: 8rem 0;
+  background-color: rgba(16, 29, 44, 0.526);
 }
 
 @media only screen and (max-width: 56.25em) {
-    .section-login {
-        padding: 3rem 0
-    }
+  .section-login {
+    padding: 3rem 0;
+  }
 }
 
 .login {
-  
-    background-size: 100%;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-    background-image: linear-gradient(rgba(16, 29, 44, 0.9), rgba(16, 29, 44, 0.93)), url(/public//img/gal-1.jpeg);
+  background-size: 100%;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+      rgba(16, 29, 44, 0.9),
+      rgba(16, 29, 44, 0.93)
+    ),
+    url(https://res.cloudinary.com/dirocp1ht/image/upload/v1670224065/gal-1_gyahmf.jpg);
 }
 
-
-
 .login__form {
-    width: 50%;
-    padding: 3rem
+  width: 50%;
+  padding: 3rem;
 }
 
 @media only screen and (max-width: 75em) {
-    .login__form {
-        width: 65%
-    }
+  .login__form {
+    width: 65%;
+  }
 }
 
 @media only screen and (max-width: 56.25em) {
-    .login__form {
-        width: 100%
-    }
+  .login__form {
+    width: 100%;
+  }
 }
 
 .login-container {
-    display: grid;
-    grid-template-rows: 45vh  repeat(2, max-content);
-    grid-template-columns: [f-start]  [c-start] repeat(8, minmax(min-content, 14rem) ) [c-end] minmax(6rem, 1fr) [f-end];
-    grid-row-gap: 0rem;
-    
+  display: grid;
+  grid-template-rows: 45vh repeat(2, max-content);
+  grid-template-columns: [f-start] [c-start] repeat(
+      8,
+      minmax(min-content, 14rem)
+    ) [c-end] minmax(6rem, 1fr) [f-end];
+  grid-row-gap: 0rem;
 }
 
 /* register user */
 .register-container {
-    display: grid;
-    grid-template-rows: 25vh  repeat(2, max-content);
-    grid-template-columns: [f-start]  [c-start] repeat(8, minmax(min-content, 14rem) ) [c-end] minmax(6rem, 1fr) [f-end];
-    grid-row-gap: rem;
-   
-    
+  display: grid;
+  grid-template-rows: 25vh repeat(2, max-content);
+  grid-template-columns: [f-start] [c-start] repeat(
+      8,
+      minmax(min-content, 14rem)
+    ) [c-end] minmax(6rem, 1fr) [f-end];
+  grid-row-gap: rem;
 }
 @media only screen and (max-width: 75em) {
-    .login-container {
-        grid-template-rows: 30vh  min-content;
-
-    }
+  .login-container {
+    grid-template-rows: 30vh min-content;
+  }
 }
 
 @media only screen and (max-width: 56.25em) {
-    .login-container {
-        grid-template-rows: 35vh  min-content;
-
-    }
+  .login-container {
+    grid-template-rows: 35vh min-content;
+  }
 }
 .login-header {
-    grid-column: f-start / -1;
-    grid-row: 1 / 2;
-    background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public/img/gal-1.jpeg);
-    background-size: cover;
-    background-position: c;
-    padding: 8rem;
-    padding-top: 4rem;
-    display: grid;
-    grid-template-columns: minmax(min-content, max-content);
-    grid-row-gap: 1.5rem;
-    justify-content: center;
+  grid-column: f-start / -1;
+  grid-row: 1 / 2;
+  background-image: linear-gradient(
+      rgba(16, 29, 44, 0.93),
+      rgba(16, 29, 44, 0.93)
+    ),
+    url(https://res.cloudinary.com/dirocp1ht/image/upload/v1670224065/gal-1_gyahmf.jpg);
+  background-size: cover;
+  background-position: c;
+  padding: 8rem;
+  padding-top: 4rem;
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content);
+  grid-row-gap: 1.5rem;
+  justify-content: center;
 }
 
 .login__section {
-    grid-column: c-start / c-end;
-    
+  grid-column: c-start / c-end;
 }
 
 @media only screen and (max-width: 50em) {
-    .login-header {
-        grid-column: f-start / -1;
-    }
+  .login-header {
+    grid-column: f-start / -1;
+  }
 }
 
 @media only screen and (max-width: 37.5em) {
-    .login-header {
-        padding: 5rem;
-    }
+  .login-header {
+    padding: 5rem;
+  }
 }
 
-.login__heading-1{
-    font-size: 4rem;
-    line-height: 1;
-    font-family: "Josefin Sans", sans-serif;
-    font-weight: 400;
+.login__heading-1 {
+  font-size: 4rem;
+  line-height: 1;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
 }
 
 @media only screen and (max-width: 56.25em) {
-    .login__heading-1{
+  .login__heading-1 {
     font-size: 3rem;
-    line-height: .5;
+    line-height: 0.5;
     font-weight: 200;
-
-    }
+  }
 }

@@ -1,19 +1,30 @@
 .profile__container {
   display: grid;
   grid-template-rows: 25vh repeat(2, min-content);
-  grid-template-columns: [sidebar-start] 19rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  grid-template-columns: [sidebar-start] 19rem [sidebar-end full-start] minmax(
+      6rem,
+      1fr
+    ) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(
+      6rem,
+      1fr
+    ) [full-end];
   grid-row-gap: 10rem;
-  background-color:rgba(16, 29, 44, 0.526);
-
-
+  background-color: rgba(16, 29, 44, 0.526);
 }
 
 .profile__header {
-  grid-column:  sidebar-end / full-end;
+  grid-column: sidebar-end / full-end;
   grid-row: 1 / 2;
-  background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(/public/img/hero.jpeg);
+  background-image: linear-gradient(
+      rgba(16, 29, 44, 0.93),
+      rgba(16, 29, 44, 0.93)
+    ),
+    url(https://res.cloudinary.com/dirocp1ht/image/upload/v1670224065/gal-1_gyahmf.jpg);
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile__sidebar {
@@ -24,13 +35,13 @@
 
 @media only screen and (max-width: 50em) {
   .header {
-      grid-column: full-start / -1;
+    grid-column: full-start / -1;
   }
 }
 
 @media only screen and (max-width: 37.5em) {
   .header {
-      padding: 5rem;
+    padding: 5rem;
   }
 }
 

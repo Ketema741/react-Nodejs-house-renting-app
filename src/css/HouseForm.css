@@ -1,17 +1,19 @@
 .add-container {
   display: grid;
   grid-template-rows: 45vh repeat(4, min-content);
-  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr) [center-start] repeat(
       8,
       [col-start] minmax(min-content, 14rem) [col-end]
-    ) [center-end] minmax(6rem, 1fr) [full-end];
+    )
+    [center-end] minmax(6rem, 1fr) [full-end];
   grid-row-gap: 8rem;
 }
-  
+
 @media only screen and (max-width: 50em) {
-    .add-container {
-      grid-template-rows: 45vh repeat(5, min-content);
-    }
+  .add-container {
+    grid-template-rows: 45vh repeat(5, min-content);
+  }
 }
 
 /*
@@ -23,116 +25,114 @@
 */
 
 .add-header {
-    background-color: #101d2c;
-    grid-column: full-start / full-end;
-    grid-row: 1 / 2;
-    background-image: linear-gradient (
-        rgba(16, 29, 44, 0.93),
-        rgba(16, 29, 44, 0.93)
-      ),
-      url(/public/img/gal-1.jpeg);
-    background-size: cover;
-    background-position: center;
-    padding: 8rem;
-    padding-top: 4rem;
-    display: grid;
-    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
-    grid-template-columns: minmax(min-content, max-content);
-    grid-row-gap: 1.5rem;
-    justify-content: center;
+  background-color: #101d2c;
+  grid-column: full-start / full-end;
+  grid-row: 1 / 2;
+  background-image: linear-gradient
+      (rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)),
+    url(https://res.cloudinary.com/dirocp1ht/image/upload/v1670224065/gal-1_gyahmf.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 8rem;
+  padding-top: 4rem;
+  display: grid;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
+  grid-row-gap: 1.5rem;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 50em) {
+  .add-header {
+    grid-column: full-start / -1;
   }
-  
-  @media only screen and (max-width: 50em) {
-    .add-header {
-      grid-column: full-start / -1;
-    }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .add-header {
+    padding: 5rem;
   }
-  
-  @media only screen and (max-width: 37.5em) {
-    .add-header {
-      padding: 5rem;
-    }
-  }
-.dashboard__btn{
+}
+.dashboard__btn {
   position: absolute;
   left: 0rem;
   top: 10rem;
   width: 15rem;
- }
+}
+.realtor__pictures {
+  background-color: #c69963;
+  grid-column: full-start / col-end 4;
+  background-image: linear-gradient(
+      rgba(198, 153, 99, 0.5),
+      rgba(198, 153, 99, 0.5)
+    ),
+    url(/public/img/back.jpg);
+  background-size: cover;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  height: 50vh;
+  padding-top: 50px;
+}
+
+@media only screen and (max-width: 50em) {
   .realtor__pictures {
-    background-color: #c69963;
-    grid-column: full-start / col-end 4;
-    background-image: linear-gradient(
-        rgba(198, 153, 99, 0.5),
-        rgba(198, 153, 99, 0.5)
-      ),
-      url(/public/img/back.jpg);
-    background-size: cover;
-    display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(6, 1fr);
-    align-items: center;
+    grid-column: full-start / full-end;
+    padding: 6rem;
     height: 50vh;
-    padding-top: 50px;
   }
-  
-  @media only screen and (max-width: 50em) {
-    .realtor__pictures {
-      grid-column: full-start / full-end;
-      padding: 6rem;
-      height: 50vh;
-    }
-  }
-  
+}
+
+.realtor__img--1 {
+  width: 100%;
+  grid-row: 2 / 6;
+  grid-column: 2 / 6;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 50em) {
   .realtor__img--1 {
-    width: 100%;
-    grid-row: 2 / 6;
-    grid-column: 2 / 6;
-    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+    grid-column: 1 / 5;
+    grid-row: 1 / -1;
   }
-  
-  @media only screen and (max-width: 50em) {
-    .realtor__img--1 {
-      grid-column: 1 / 5;
-      grid-row: 1 / -1;
-    }
-  }
-  
-  .realtor__img--2 {
-    width: 115%;
-    grid-row: 4 / 6;
-    grid-column: 4 / 7;
-    z-index: 20;
-    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
-  }
-  
-  /* @media only screen and (max-width: 50em) {
+}
+
+.realtor__img--2 {
+  width: 115%;
+  grid-row: 4 / 6;
+  grid-column: 4 / 7;
+  z-index: 20;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+/* @media only screen and (max-width: 50em) {
         .realtor__img--2 {
             grid-row: 1 / -1;
             width: 100%;
         }
     } */
-  
+
 .realtor__content {
-    background-color: #f9f7f6;
-    grid-column: col-start 5 / full-end;
-    padding: 6rem 8vw;
-    display: grid;
-    align-content: center;
-    justify-items: start;
-    margin-bottom: 1rem;
+  background-color: #f9f7f6;
+  grid-column: col-start 5 / full-end;
+  padding: 6rem 8vw;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 50em) {
-.realtor__content {
+  .realtor__content {
     grid-column: full-start / full-end;
-}
+  }
 }
 
 .realtor__text {
-    font-size: 1.5rem;
-    font-style: italic;
-    margin-bottom: 4rem;
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 4rem;
 }
 
 .add {
@@ -140,20 +140,17 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
- 
 }
 
-.edit__row{
+.edit__row {
   grid-column: col-end 5 / col-end 8;
 }
 
 @media only screen and (max-width: 75em) {
   .edit__row {
     grid-column: center-start / center-end;
-    
   }
 }
-
 
 .img__preview-container {
   display: grid;
@@ -163,42 +160,40 @@
 }
 
 .image__preview {
-  position:relative;
+  position: relative;
 }
-.choosen__img{
-  width:100%;
-  height:100%;
+.choosen__img {
+  width: 100%;
+  height: 100%;
 }
 .delete {
-  position:absolute;
+  position: absolute;
   left: 90%;
   top: 5%;
   z-index: 1000;
-  border-radius:50%;
-  font-size:2rem
+  border-radius: 50%;
+  font-size: 2rem;
 }
 
 .delete:hover {
-  color:rgba(227, 78, 78, 0.956);
-  cursor:pointer;
-
+  color: rgba(227, 78, 78, 0.956);
+  cursor: pointer;
 }
 .add__row {
   grid-column: full-start / col-end 4;
-  grid-row-start: 3 ;
+  grid-row-start: 3;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  grid-gap:7rem;
+  grid-gap: 7rem;
   padding: 4rem;
-} 
+}
 
 @media only screen and (max-width: 75em) {
   .add__row {
     grid-column: center-start / center-end;
-    grid-row-start: 4 ;
-    grid-gap:7rem;
-    padding:3rem ;
-
+    grid-row-start: 4;
+    grid-gap: 7rem;
+    padding: 3rem;
   }
 }
 
@@ -206,11 +201,9 @@
   .add__row {
     grid-column: full-start / full-end;
     grid-row-start: 5;
-    padding:3rem ;
+    padding: 3rem;
   }
 }
-
-
 
 .add__card {
   -webkit-perspective: 150rem;
@@ -219,7 +212,6 @@
   position: relative;
   min-height: 40rem;
 }
-
 
 .home__side {
   -webkit-transition: all 0.8s ease;
@@ -244,14 +236,12 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-
 }
 
 /*  front side rotation */
 .add__card:hover .home__side--front {
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
- 
 }
 
 /*  back side rotation */
@@ -267,7 +257,6 @@
   grid-row-gap: 2rem;
 }
 
-
 .add__row::after {
   content: "";
   display: table;
@@ -280,7 +269,7 @@
       rgba(60, 55, 55, 0.3) 100%,
       transparent 50%
     ),
-    url(/public/img/gal-1.jpeg);
+    url(https://res.cloudinary.com/dirocp1ht/image/upload/v1670224065/gal-1_gyahmf.jpg);
   background-size: 100%;
   border-radius: 3px;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
@@ -290,13 +279,11 @@
 
 @media only screen and (max-width: 75em) {
   .add-home {
-  
   }
 }
 
 @media only screen and (max-width: 56.25em) {
   .add-home {
-   
   }
 }
 
@@ -356,7 +343,6 @@
   -webkit-transform: translateY(-4rem);
   transform: translateY(-4rem);
 }
-
 
 .form__input--grid-2 {
   width: 100%;
@@ -443,7 +429,7 @@
 }
 
 .footer {
-    background-color: #101d2c;
-    grid-column: full-start / full-end;
-    padding: 8rem;
+  background-color: #101d2c;
+  grid-column: full-start / full-end;
+  padding: 8rem;
 }

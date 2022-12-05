@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDom from 'react-dom';
+import ReactDom from "react-dom";
 import "../../css/Modal.css";
 
 const Warning = ({ setModalOpen, onDelete }) => {
@@ -7,7 +7,8 @@ const Warning = ({ setModalOpen, onDelete }) => {
     <div className="modal__background">
       <div className="modal__container">
         <div className="title__close-btn">
-          <button className = 'modal__x'
+          <button
+            className="modal__x"
             onClick={() => {
               setModalOpen(false);
             }}
@@ -16,7 +17,7 @@ const Warning = ({ setModalOpen, onDelete }) => {
           </button>
         </div>
         <div className="title">
-          <h1 className='pop__heading'>Delete Assets</h1>
+          <h1 className="pop__heading">Delete Assets</h1>
         </div>
         <div className="body">
           <p>Are you sure you want to delete your House?</p>
@@ -26,16 +27,18 @@ const Warning = ({ setModalOpen, onDelete }) => {
             onClick={() => {
               setModalOpen(false);
             }}
-            className='cancel__btn'
+            className="cancel__btn"
           >
             Cancel
           </button>
-          <button className='modal__delete-btn' onClick={onDelete}>Delete</button>
+          <button className="modal__delete-btn" onClick={onDelete}>
+            Delete
+          </button>
         </div>
       </div>
     </div>,
-    document.getElementById('portal')
-  )
-}
+    document.getElementById("portal")
+  );
+};
 
 export default Warning;

@@ -1,71 +1,71 @@
 .modal__background {
-    position: fixed;
-    top:0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(200, 200, 200, .7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal__container {
-    max-width: 60rem;
-    min-height: 28rem;
-    border-radius: 1.2rem;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0rem .5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    padding: 2.5rem;
-  }
-  
-  .modal__container .title {
-    display: inline-block;
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .title__close-btn {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .title__close-btn button {
-    border: none;
-    font-size: 2.5rem;
-    cursor: pointer;
-  }
-  
-  .modal__container .body {
-    flex: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.7rem;
-    text-align: center;
-  }
-  
-  .modal__footer {
-    flex: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal__delete-btn,
-  .cancel__btn {
-    width: 15rem;
-    height: 4.5rem;
-    margin: 1rem;
-    border: none;
-    color: rgb(255, 252, 252);
-    border-radius: .8rem;
-    font-size: 2rem;
-    cursor: pointer;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(200, 200, 200, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal__container {
+  max-width: 60rem;
+  min-height: 28rem;
+  border-radius: 1.2rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0rem 0.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+}
+
+.modal__container .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.title__close-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title__close-btn button {
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.modal__container .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modal__footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__delete-btn,
+.cancel__btn {
+  width: 15rem;
+  height: 4.5rem;
+  margin: 1rem;
+  border: none;
+  color: rgb(255, 252, 252);
+  border-radius: 0.8rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
 .modal__delete-btn {
   background-color: rgba(223, 2, 2, 0.843);
@@ -74,8 +74,7 @@
 .pop__heading {
   font-size: 2rem;
 }
-  
+
 .cancel__btn {
   background-color: #c69963;
-
 }
