@@ -77,6 +77,7 @@ router.post(
       garage,
       yearBuilt,
       houseImages,
+      type,
     } = req.body;
 
     try {
@@ -92,6 +93,7 @@ router.post(
         garage,
         yearBuilt,
         houseImages,
+        type,
         realtor: req.realtor.id,
       });
       const house = await newHouse.save();
@@ -119,6 +121,7 @@ router.put("/:id", realtorAuth, async (req, res) => {
     garage,
     yearBuilt,
     Neighborhood,
+    type,
   } = req.body;
 
   // Build house object
@@ -134,6 +137,7 @@ router.put("/:id", realtorAuth, async (req, res) => {
   if (garage) houseFields.garage = garage;
   if (yearBuilt) houseFields.yearBuilt = yearBuilt;
   if (Neighborhood) houseFields.Neighborhood = Neighborhood;
+  if (type) houseFields.type = type;
 
   try {
     let house = await House.findById(req.params.id);

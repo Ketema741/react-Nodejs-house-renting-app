@@ -31,7 +31,7 @@ const HomeItem = ({ home, addToCart, removeFromCart }) => {
 
 	const handleView = () => {
 		getHouse(_id)
-		navigate(`house/${_id}`)
+		navigate(`/house/${_id}`)
 	}
 	
 	

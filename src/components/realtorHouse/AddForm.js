@@ -15,6 +15,7 @@ const initialState = {
   garage: "",
   yearBuilt: "",
   houseImages: null,
+  type: "rent",
 };
 
 const AddForm = () => {
@@ -26,20 +27,7 @@ const AddForm = () => {
     if (current !== null) {
       setHouse(current);
     } else {
-      setHouse({
-        realtor: "",
-        title: "",
-        description: "",
-        location: "",
-        area: "",
-        bed: "",
-        bath: "",
-        price: "",
-        propertyType: "",
-        garage: "",
-        yearBuilt: "",
-        houseImages: null,
-      });
+      setHouse(initialState);
     }
   }, [current]);
 
@@ -58,6 +46,7 @@ const AddForm = () => {
     propertyType,
     garage,
     yearBuilt,
+    type
   } = house;
 
   const onChange = (e) => {
@@ -85,24 +74,11 @@ const AddForm = () => {
     if (current == null) {
       addHouse(house, images);
     } else {
+      console.log(house)
       updateHouse(house);
     }
     clearAll();
-    setHouse({
-      realtor: "",
-      title: "",
-      description: "",
-      location: "",
-      area: "",
-      bed: "",
-      bath: "",
-      price: "",
-      propertyType: "",
-      garage: "",
-      yearBuilt: "",
-      houseImages: null,
-    });
-
+    setHouse(initialState);
     setImages([]);
   };
 
@@ -116,6 +92,27 @@ const AddForm = () => {
       <div className="add-home">
         <div className="add__form">
           <form className="form" onSubmit={onSubmitHandler}>
+            <h1 className="heading-1"> House Type </h1>
+            <div>
+              <input
+                type="radio"
+                name="type"
+                value="rent"
+                checked={type === "rent"}
+                onChange={onChange}
+              />{" "}
+              <span className="heading-4"> For Rent </span>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="type"
+                value="sell"
+                checked={type === "sell"}
+                onChange={onChange}
+              />{" "}
+              <span className="heading-4"> For Sell</span>
+            </div>
             <div className="form__input">
               <CloudinaryUploadWidget handleOpenWidget={handleOpenWidget} />
               <div className="img__preview-container">

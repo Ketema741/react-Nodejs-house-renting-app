@@ -6,6 +6,10 @@ const ContactSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'realtor'
 	},
+	type: { 
+		type: String,
+		default: "rent"
+	},
 	houseImages: {
 		type: [Object],
 		required: true

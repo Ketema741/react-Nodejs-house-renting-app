@@ -4,6 +4,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Home from "./components/pages/Home";
+import HomesForRent from "./components/pages/forRent";
+import HomesForSell from "./components/pages/forSell";
 import RealtorLogin from "./components/realtorAuth/Login";
 import RealtorRegister from "./components/realtorAuth/Register";
 import RealtorHomes from "./components/realtorHouse/RealtorHomes";
@@ -27,6 +29,8 @@ function App() {
             <Router>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/houses-for-rent" element={<HomesForRent />} />
+                <Route path="/houses-for-sell" element={<HomesForSell />} />
                 <Route path="realtorlogin" element={<RealtorLogin />} />
                 <Route path="realtorregister" element={<RealtorRegister />} />
                 <Route path="/edit-profile" element={<Profile />} />
