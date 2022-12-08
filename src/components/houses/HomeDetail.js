@@ -93,6 +93,9 @@ const HomeDetail = () => {
                 className="detail__home-img"
               />
               <h5 className="detail__home-name">{house.propertyType}</h5>
+              <div className="home__type">
+                <h5 className={house.type}> For {house.type}</h5>
+              </div>
               <div className="home__location">
                 <FaMap />
                 <p>{house.location}</p>
@@ -127,8 +130,8 @@ const HomeDetail = () => {
                 Add to favourites
               </button>
             </div>
-          
-              <ImageSlider slides={house.houseImages} />
+
+            <ImageSlider slides={house.houseImages} />
           </section>
         </Fragment>
       ) : (

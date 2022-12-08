@@ -1,13 +1,13 @@
 .container {
   display: grid;
   grid-template-rows: 45vh repeat(4, min-content);
-  grid-template-columns: [sidebar-start] 10rem [sidebar-end full-start] minmax(
-      6rem,
-      1fr
-    ) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(
-      6rem,
-      1fr
-    ) [full-end];
+  grid-template-columns:
+    [sidebar-start] 10rem [sidebar-end full-start] minmax(6rem, 1fr)
+    [center-start] repeat(
+      8,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    ) [center-end] minmax(6rem, 1fr)
+    [full-end];
 }
 
 .header {
@@ -102,15 +102,28 @@
     max-height: 35rem;
   }
 }
-.home__like {
+.home__type {
   grid-row: 1 / 2;
   grid-column: 2 / 3;
-  fill: #c69963;
-  height: 2.5rem;
-  width: 2.5rem;
+  font-size: 2rem;
   z-index: 2;
   justify-self: end;
-  margin: 1rem;
+  margin: 0.5rem;
+  margin-right: 1rem;
+  color: #f9f7f6;
+}
+.sell {
+  background-color: #c69963;
+}
+
+.sell,
+.rent {
+  padding: 0.1rem 1rem;
+  border-radius: 1rem;
+}
+
+.rent {
+  background-color: #101d2c;
 }
 
 .home__name {

@@ -25,6 +25,7 @@ const HomeItem = ({ home, addToCart, removeFromCart }) => {
 		bed,
 		price, 
 		houseImages,
+		type,
 		_id
 	} = home
 
@@ -40,7 +41,9 @@ const HomeItem = ({ home, addToCart, removeFromCart }) => {
 			<img src={houseImages.length >=1 ? houseImages[0].url:'/public/img/gal-1.jpeg'} alt={title} className="home__img" />	 
 			
 			<h5 className="home__name">{title}</h5>
-
+			<div className="home__type">
+				<h5 className={type} > For {type}</h5>
+			</div>
 			<div className="home__location">
                 <FaMap  />
 				<p>{location}</p>
